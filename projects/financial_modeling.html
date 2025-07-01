@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Gabriel Kronisch - Financial Modeling Projects. Excel, Python, and VBA models for DCF analysis, company valuations, and strategic planning." />
+    <title>Financial Modeling - Gabriel Kronisch Portfolio</title>
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --penn-state-blue: #041E42;
+            --willamette-burgundy: #8B1538;
+            --light-blue: #f8fbff;
+            --accent-blue: #2c5aa0;
+            --accent-burgundy: #a8476b;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-gray: #f7fafc;
+        }
+
+        [data-theme="dark"] {
+            --penn-state-blue: #4a90ff;
+            --willamette-burgundy: #ff6b8a;
+            --light-blue: #1a202c;
+            --accent-blue: #63b3ed;
+            --accent-burgundy: #f56565;
+            --text-dark: #e2e8f0;
+            --text-light: #a0aec0;
+            --white: #1a202c;
+            --light-gray: #2d3748;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--penn-state-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            color: var(--penn-state-blue);
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon h2 {
+            font-size: 2.5rem;
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--willamette-burgundy);
+        }
+
+        .feature-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--willamette-burgundy);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Gabriel Kronisch</a>
+            <a href="../index.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Financial Modeling</h1>
+            <p class="subtitle">Advanced Excel, Python & VBA Models for Strategic Decision-Making</p>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <div class="coming-soon-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h2>Coming Soon</h2>
+            <p>
+                I'm currently developing a comprehensive showcase of my financial modeling work, including 
+                DCF analysis, company valuations, scenario planning models, and automated reporting dashboards. 
+                This section will feature detailed case studies and downloadable templates.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html#contact" class="btn">Contact Me</a>
+                <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-outline" download>View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planned Features -->
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 3rem;">What's Coming</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-calculator" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>DCF Analysis Models</h3>
+                    <p>
+                        Comprehensive discounted cash flow models with sensitivity analysis, scenario planning, 
+                        and Monte Carlo simulations for company valuations and investment decisions.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-bar" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Budget Planning Tools</h3>
+                    <p>
+                        Advanced Excel templates for budget creation, variance analysis, and rolling forecasts 
+                        based on my experience managing $250,000+ in organizational budgets.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-code" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Python & VBA Automation</h3>
+                    <p>
+                        Automated financial reporting scripts and data processing tools that streamline 
+                        financial analysis workflows and improve accuracy.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-project-diagram" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Strategic Planning Models</h3>
+                    <p>
+                        Business strategy and financial planning models used in real consulting projects, 
+                        including SWOT analysis frameworks and competitive analysis tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Gabriel Kronisch. All rights reserved.</p>
+    </footer>
+</body>
+</html>
