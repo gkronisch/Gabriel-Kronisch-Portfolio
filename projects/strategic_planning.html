@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Gabriel Kronisch - Strategic Planning and Business Strategy. SWOT analysis, financial planning, and strategic consulting experience." />
+    <title>Strategic Planning - Gabriel Kronisch Portfolio</title>
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --penn-state-blue: #041E42;
+            --willamette-burgundy: #8B1538;
+            --light-blue: #f8fbff;
+            --accent-blue: #2c5aa0;
+            --accent-burgundy: #a8476b;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-gray: #f7fafc;
+        }
+
+        [data-theme="dark"] {
+            --penn-state-blue: #4a90ff;
+            --willamette-burgundy: #ff6b8a;
+            --light-blue: #1a202c;
+            --accent-blue: #63b3ed;
+            --accent-burgundy: #f56565;
+            --text-dark: #e2e8f0;
+            --text-light: #a0aec0;
+            --white: #1a202c;
+            --light-gray: #2d3748;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--penn-state-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent-burgundy) 0%, var(--willamette-burgundy) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-section {
+            background: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid var(--willamette-burgundy);
+        }
+
+        .result-icon {
+            font-size: 2.5rem;
+            color: var(--willamette-burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .result-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-metric {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            color: var(--willamette-burgundy);
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon h2 {
+            font-size: 2.5rem;
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--penn-state-blue);
+        }
+
+        .project-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--willamette-burgundy);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Gabriel Kronisch</a>
+            <a href="../index.html#portfolio" class="back-link">
+                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Strategic Planning</h1>
+            <p class="subtitle">Business Strategy & Financial Planning for Growth</p>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 1rem;">Strategic Impact</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Measurable results from strategic planning initiatives</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Revenue Growth</h3>
+                    <div class="result-metric">167%</div>
+                    <div class="result-description">Total revenue growth in ICBSC competition through strategic planning</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Features Implemented</h3>
+                    <div class="result-metric">3+</div>
+                    <div class="result-description">Product features implemented from strategic recommendations at Impulse</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Cost Reduction</h3>
+                    <div class="result-metric">25%</div>
+                    <div class="result-description">Average cost reduction achieved through strategic budget optimization</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Competition Awards</h3>
+                    <div class="result-metric">3</div>
+                    <div class="result-description">Awards won for strategic planning in international business competition</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 3rem;">Strategic Planning Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Impulse App Strategy Consulting</h3>
+                    <p class="project-meta">Current | Self-Improvement Mobile App</p>
+                    <p>
+                        Weekly strategic consulting with CEO on app development, business strategy, and UI optimization. 
+                        Created comprehensive SWOT analysis and long-term business plans balancing user engagement 
+                        and profitability, resulting in multiple implemented features.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>ICBSC Global Business Competition</h3>
+                    <p class="project-meta">2024 | Chief Financial Officer Role</p>
+                    <p>
+                        Led financial strategy in 11-week competitive simulation, performing sensitivity analysis 
+                        and Bayesian updating on investments. Delivered 90.8% YoY revenue growth through strategic 
+                        reinvestment and earned Best Presentation award among international teams.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Penn State GPSA Strategic Planning</h3>
+                    <p class="project-meta">2024-2025 | $108,000 Budget Oversight</p>
+                    <p>
+                        Developed data-driven recommendations that supported successful case for increased future funding. 
+                        Created modernized budgeting formats and strategic allocation frameworks that improved 
+                        decision-making clarity across the organization.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Sustainability Strategy Implementation</h3>
+                    <p class="project-meta">2022-2024 | Multi-Year Financial Planning</p>
+                    <p>
+                        Designed multi-year financial transition plan using straight-line depreciation modeling 
+                        for recurring grants. Successfully redirected $50K+ in funding toward more impactful 
+                        startup projects aligned with organizational goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <div class="coming-soon-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h2>Case Studies & Frameworks</h2>
+            <p>
+                I'm developing detailed case studies of my strategic planning work, including SWOT analysis 
+                frameworks, business plan templates, and the strategic models I've used in real consulting 
+                engagements. This will showcase my methodology and the results achieved.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html#contact" class="btn">Discuss Strategy Work</a>
+                <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-outline" download>View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->

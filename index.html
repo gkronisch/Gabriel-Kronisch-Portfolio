@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Gabriel Kronisch - MFIN Financial Analyst Portfolio. Expert in FP&A, financial modeling, budgeting, and strategic planning." />
+    <meta name="author" content="Gabriel Kronisch" />
+    <title>Gabriel Kronisch - Financial Analyst Portfolio</title>
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --penn-state-blue: #041E42;
+            --willamette-burgundy: #8B1538;
+            --light-blue: #f8fbff;
+            --accent-blue: #2c5aa0;
+            --accent-burgundy: #a8476b;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-gray: #f7fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--penn-state-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--willamette-burgundy);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h4 {
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--white);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--willamette-burgundy);
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-header h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-meta {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            min-height: 300px;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-item h4 {
+            color: var(--penn-state-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .portfolio-badge {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--penn-state-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--penn-state-blue);
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+            color: var(--willamette-burgundy);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .hero-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.hero-image {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.hero-text {
+    flex: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .profile-image {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 180px;
+        height: 180px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">Gabriel Kronisch</a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="assets/img/Headshot.jpg" alt="Gabriel Kronisch" class="profile-image">
+            </div>
+            <div class="hero-text">
+                <h1>Gabriel Kronisch, MFIN</h1>
+                <p class="subtitle">Aspiring Financial Analyst and FP&A Specialist</p>
+                <p class="description">
+                    Master of Finance graduate from Penn State Smeal College of Business with expertise in 
+                    financial modeling, budgeting, strategic planning, and data analysis. Passionate about 
+                    driving organizational efficiency and profitability through data-driven insights.
+                </p>
+<div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+    <a href="#portfolio" class="btn">View My Work</a>
+    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn" style="background: transparent; border: 2px solid var(--white); color: var(--white);" download>
+        <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Download Resume
+    </a>
+</div>            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="subtitle">Get to Know Me</p>
+                <h2>About Gabriel</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        As a Master of Finance graduate from Penn State's Smeal College of Business, I bring 
+                        a unique combination of analytical rigor and strategic thinking to financial analysis 
+                        and planning roles.
+                    </p>
+                    <p>
+                        My academic journey includes dual Bachelor's degrees in Economics and Japanese Studies 
+                        from Willamette University, along with international experience in Japan that has 
+                        enriched my global perspective and problem-solving approach.
+                    </p>
+                    <p>
+                        With extensive hands-on experience managing budgets exceeding a total of $250,000, conducting 
+                        financial modeling, and providing strategic business recommendations, I'm passionate about 
+                        helping organizations make data-driven decisions that drive growth and efficiency.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Technical Skills</h4>
+                        <p>Excel, VBA, Python, R, SQL, Power BI, Financial Modeling, DCF Analysis</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Finance Expertise</h4>
+                        <p>FP&A, Budgeting, Forecasting, Valuation, Risk Management, Strategic Planning</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <p>English (Native), Japanese (Professional), Spanish (Limited)</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Certifications</h4>
+                        <p>Power BI Fundamentals, Financial Modeling & Forecasting, JLPT N3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="subtitle">Professional Background</p>
+                <h2>Experience</h2>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Strategy Consultant | Impulse</h3>
+                    <p class="experience-meta">September 2024 - Present</p>
+                </div>
+                <p>
+                    Consult weekly with CEO on self-improvement app development, business strategy, and UI optimization. 
+                    Created comprehensive SWOT analysis and long-term business plans, resulting in 3+ implemented 
+                    features from strategic recommendations.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Director of Strategic Planning | Penn State GPSA</h3>
+                    <p class="experience-meta">August 2024 - May 2025</p>
+                </div>
+                <p>
+                    Managed and allocated $108,000 annual operating budget with enhanced forecasting and strategic 
+                    oversight. Created automated cash flow metrics and modernized budgeting formats, improving 
+                    decision-making clarity and fund visibility.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>CFO | ICBSC Business Competition</h3>
+                    <p class="experience-meta">January 2024 - April 2024</p>
+                </div>
+                <p>
+                    Led financial strategy in competitive 11-week global business simulation, delivering 90.8% YoY 
+                    revenue growth and 167% total revenue growth with 22% CAGR. Earned Best Presentation and 
+                    Runner-up Best Overall awards among international university teams.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Financial Officer | CAFES</h3>
+                    <p class="experience-meta">August 2022 - May 2024</p>
+                </div>
+                <p>
+                    Maintained $130,000 annual operating budget and oversaw 49+ grant projects. Implemented enhanced 
+                    financial governance systems, reducing mischarge rates to zero and achieving 100% compliance 
+                    over two academic years.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="subtitle">My Work</p>
+                <h2>Portfolio</h2>
+            </div>
+            <div class="portfolio-grid">
+                <a href="projects/financial_modeling.html" class="portfolio-item">
+                    <div class="portfolio-content">
+                        <div>
+                            <h4>Financial Modeling</h4>
+                            <p>
+                                Comprehensive Excel and Python models including DCF analysis, company valuations, 
+                                and scenario planning for strategic decision-making.
+                            </p>
+                        </div>
+                        <span class="portfolio-badge">Excel • Python • VBA</span>
+                    </div>
+                </a>
+
+                <a href="projects/power_bi_dashboards.html" class="portfolio-item">
+                    <div class="portfolio-content">
+                        <div>
+                            <h4>Power BI Dashboards</h4>
+                            <p>
+                                Interactive data visualizations and business intelligence dashboards for 
+                                financial performance tracking and KPI monitoring.
+                            </p>
+                        </div>
+                        <span class="portfolio-badge">Power BI • DAX • SQL</span>
+                    </div>
+                </a>
+
+                <a href="projects/budget_analysis.html" class="portfolio-item">
+                    <div class="portfolio-content">
+                        <div>
+                            <h4>Budget Analysis</h4>
+                            <p>
+                                Advanced budgeting frameworks and variance analysis systems implemented 
+                                across multiple organizations with budgets exceeding $250,000.
+                            </p>
+                        </div>
+                        <span class="portfolio-badge">Budgeting • Forecasting</span>
+                    </div>
+                </a>
+
+                <a href="projects/strategic_planning.html" class="portfolio-item">
+                    <div class="portfolio-content">
+                        <div>
+                            <h4>Strategic Planning</h4>
+                            <p>
+                                Business strategy development, SWOT analysis, and financial planning 
+                                projects that drive organizational growth and efficiency.
+                            </p>
+                        </div>
+                        <span class="portfolio-badge">Strategy • Analysis</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="subtitle">Get In Touch</p>
+                <h2>Contact</h2>
+            </div>
+            <div class="contact-content">
+                <p>
+                    I'm actively seeking opportunities as an FP&A Analyst, Financial Analyst, or related roles. 
+                    Let's connect to discuss how I can contribute to your organization's financial success.
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:gkronisch19@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        gkronisch19@gmail.com
+                    </a>
+                    <a href="REDACTED" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        REDACTED
+                    </a>
+                    <a href="https://linkedin.com/in/gabriel-kronisch" class="contact-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn Profile
+                    </a>
+                     <a href="assets/Gabriel_Kronisch_Resume.pdf" class="contact-item" download>
+        <i class="fas fa-file-pdf"></i>
+        Download Resume
+        </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Gabriel Kronisch. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'var(--white)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
