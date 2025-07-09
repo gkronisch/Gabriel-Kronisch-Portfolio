@@ -649,7 +649,7 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(4, 30, 66, 0.1);
+            background: linear-gradient(135deg, #4a90ff 0%, #9b6bb8 100%);
             transform: rotate(15deg);
         }
 
@@ -1212,10 +1212,46 @@
             }
         }
 
+        // Mobile menu toggle functionality
+        function initMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.getElementById('sidebar-wrapper');
+            
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    const isExpanded = sidebar.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                    sidebar.setAttribute('aria-hidden', !isExpanded);
+                });
+                
+                // Close menu when clicking sidebar links
+                const sidebarLinks = sidebar.querySelectorAll('.sidebar-nav-link');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        sidebar.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        sidebar.setAttribute('aria-hidden', 'true');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                        sidebar.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        sidebar.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            }
+        }
+
         // Initialize functionality when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize theme functionality
             initTheme();
+            // Initialize mobile menu functionality
+            initMobileMenu();
         });
     </script>
 </body>
