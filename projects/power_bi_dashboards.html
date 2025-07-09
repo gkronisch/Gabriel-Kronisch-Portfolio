@@ -32,6 +32,9 @@
             --text-light: #a0aec0;
             --white: #1a202c;
             --light-gray: #2d3748;
+            --midnight-purple: #9b6bb8;
+            --bronze-gold: #B8860B;
+            --bright-gold: #FFD700;
         }
 
         * {
@@ -194,6 +197,13 @@
             box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
         }
 
+        [data-theme="dark"] .btn-secondary:hover {
+            background: var(--midnight-purple);
+            color: #000000;
+            border-color: var(--midnight-purple);
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
+        }
+
         .btn-icon {
             margin-right: 0.5rem;
         }
@@ -269,6 +279,12 @@
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
+        }
+
+        [data-theme="dark"] .btn:hover {
+            background: var(--midnight-purple);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
 
         .btn-outline {

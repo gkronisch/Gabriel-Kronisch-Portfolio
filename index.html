@@ -35,7 +35,7 @@
             --text-light: #a0aec0;
             --white: #1a202c;
             --light-gray: #2d3748;
-            --midnight-purple: #4a148c;
+            --midnight-purple: #9b6bb8;
             --bronze-gold: #B8860B;
             --bright-gold: #FFD700;
         }
@@ -196,7 +196,8 @@
 
         [data-theme="dark"] .btn:hover {
             background: var(--midnight-purple);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
 
         .btn-secondary {
@@ -220,9 +221,9 @@
 
         [data-theme="dark"] .btn-secondary:hover {
             background: var(--midnight-purple);
-            color: var(--white);
+            color: #000000;
             border-color: var(--midnight-purple);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
 
         .btn-icon {
@@ -418,7 +419,7 @@
         }
 
         [data-theme="dark"] .portfolio-item:hover {
-            box-shadow: 0 8px 25px rgba(74, 20, 140, 0.25);
+            box-shadow: 0 8px 25px rgba(155, 107, 184, 0.25);
         }
 
         .portfolio-content {
@@ -462,7 +463,7 @@
         }
 
         [data-theme="dark"] .portfolio-item h4 span {
-            background-color: var(--penn-state-blue);
+            background-color: #0e475a;
         }
 
         .portfolio-item p {
@@ -503,7 +504,8 @@
 
         [data-theme="dark"] .portfolio-badge:hover {
             background: var(--midnight-purple);
-            box-shadow: 0 2px 8px rgba(74, 20, 140, 0.3);
+            color: #000000;
+            box-shadow: 0 2px 8px rgba(155, 107, 184, 0.3);
         }
 
         /* Contact Section */
@@ -550,7 +552,16 @@
 
         [data-theme="dark"] .contact-item:hover {
             background: var(--midnight-purple);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
+        }
+
+        [data-theme="dark"] .contact-item:hover i {
+            color: #000000;
+        }
+
+        [data-theme="dark"] .contact-item:hover i.fa-file-pdf {
+            color: var(--bright-gold);
         }
 
         .contact-item i {
@@ -1173,8 +1184,8 @@
             const themeToggle = document.querySelector('.theme-toggle');
             const themeIcon = themeToggle.querySelector('i');
             
-            // Check for saved theme preference or default to light mode
-            const savedTheme = localStorage.getItem('theme') || 'light';
+            // Check for saved theme preference or default to dark mode
+            const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
             
             // Update icon based on current theme
