@@ -253,8 +253,23 @@
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(139, 21, 56, 0.15);
             border-left: 4px solid var(--willamette-burgundy);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 6px 25px rgba(139, 21, 56, 0.25);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .feature-card {
+            border-left: 4px solid var(--midnight-purple);
+            box-shadow: 0 4px 20px rgba(155, 107, 184, 0.15);
+        }
+
+        [data-theme="dark"] .feature-card:hover {
+            box-shadow: 0 6px 25px rgba(155, 107, 184, 0.25);
         }
 
         .feature-card h3 {
