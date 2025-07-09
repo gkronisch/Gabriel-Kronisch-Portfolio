@@ -29,6 +29,7 @@
 
         body {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -85,7 +86,6 @@
         .hero {
             background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--accent-blue) 100%);
             color: var(--white);
-            padding: 8rem 2rem 6rem;
             text-align: center;
             margin-top: 80px;
         }
@@ -96,19 +96,19 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .hero .subtitle {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
         .hero .description {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             margin-bottom: 2.5rem;
             opacity: 0.8;
             line-height: 1.8;
@@ -123,6 +123,7 @@
             border-radius: 5px;
             font-weight: 600;
             transition: all 0.3s ease;
+            border: 2px solid var(--willamette-burgundy);
         }
 
         .btn:hover {
@@ -131,13 +132,65 @@
             box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
         }
 
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--penn-state-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         /* Sections */
         .section {
-            padding: 5rem 2rem;
+            padding: clamp(3rem, 8vw, 5rem) 2rem;
         }
 
         .section-alt {
             background: var(--light-gray);
+        }
+
+        /* Section spacing improvements */
+        .section-header {
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+        }
+
+        .hero {
+            padding: clamp(6rem, 12vw, 8rem) 2rem clamp(4rem, 8vw, 6rem);
+        }
+
+        /* Content spacing within sections */
+        .about-content {
+            gap: clamp(2rem, 6vw, 4rem);
+        }
+
+        .experience-item {
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .portfolio-grid {
+            gap: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .contact-content p {
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
         }
 
         .container {
@@ -147,17 +200,16 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             color: var(--penn-state-blue);
             margin-bottom: 1rem;
         }
 
         .section-header .subtitle {
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -168,38 +220,69 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
             align-items: center;
         }
 
         .about-text {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             line-height: 1.8;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
         .skill-category {
             background: var(--white);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .skill-category h4 {
             color: var(--penn-state-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-badge {
+            background: var(--light-blue);
+            color: var(--penn-state-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(4, 30, 66, 0.1);
+            transition: all 0.2s ease;
+            cursor: default;
+            line-height: 1.1;
+        }
+
+        .skill-badge:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(4, 30, 66, 0.25);
+            border-color: var(--penn-state-blue);
+        }
+
+        .skill-badge:focus {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
         }
 
         /* Experience Section */
         .experience-item {
             background: var(--white);
             padding: 2rem;
-            margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-left: 4px solid var(--willamette-burgundy);
@@ -223,7 +306,6 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
         }
 
         .portfolio-item {
@@ -232,11 +314,13 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
-            min-height: 300px;
+            height: 100%;
             border-left: 4px solid var(--accent-blue);
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-item:hover {
@@ -246,10 +330,26 @@
 
         .portfolio-content {
             padding: 2rem;
-            height: 100%;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: 280px;
+        }
+
+        .portfolio-header {
+            flex-shrink: 0;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-description {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-footer {
+            flex-shrink: 0;
+            margin-top: auto;
         }
 
         .portfolio-item h4 {
@@ -273,15 +373,31 @@
             line-height: 1.6;
         }
 
+        .portfolio-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
         .portfolio-badge {
             display: inline-block;
             background: var(--light-blue);
             color: var(--penn-state-blue);
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 14px;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin-top: 1rem;
+            border: 1px solid rgba(4, 30, 66, 0.1);
+            transition: all 0.2s ease;
+            line-height: 1.1;
+        }
+
+        .portfolio-badge:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(4, 30, 66, 0.2);
         }
 
         /* Contact Section */
@@ -322,14 +438,86 @@
             padding: 2rem;
         }
 
+        /* Mobile Navigation */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--penn-state-blue);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(4, 30, 66, 0.1);
+        }
+
+        .menu-toggle:focus {
+            outline: 2px solid var(--penn-state-blue);
+            outline-offset: 2px;
+        }
+
+        /* Sidebar Navigation */
+        #sidebar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        #sidebar-wrapper.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-top: 4rem;
+        }
+
+        .sidebar-nav-item {
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .sidebar-nav-link {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav-link:hover {
+            background: var(--light-gray);
+            color: var(--penn-state-blue);
+            padding-left: 2.5rem;
+        }
+
+        .sidebar-nav-link:focus {
+            outline: 2px solid var(--penn-state-blue);
+            outline-offset: -2px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .menu-toggle {
+                display: block;
             }
 
             .about-content {
@@ -413,7 +601,31 @@
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </nav>
+
+    <!-- Mobile Navigation Sidebar -->
+    <nav id="sidebar-wrapper" aria-hidden="true">
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a class="sidebar-nav-link js-scroll-trigger" href="#home">Home</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="sidebar-nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="sidebar-nav-link js-scroll-trigger" href="#experience">Experience</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="sidebar-nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="sidebar-nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+        </ul>
     </nav>
 
 <!-- Hero Section -->
@@ -431,10 +643,10 @@
                     financial modeling, budgeting, strategic planning, and data analysis. Passionate about 
                     driving organizational efficiency and profitability through data-driven insights.
                 </p>
-<div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+<div class="btn-container">
     <a href="#portfolio" class="btn">View My Work</a>
-    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn" style="background: transparent; border: 2px solid var(--white); color: var(--white);" download>
-        <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Download Resume
+    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+        <i class="fas fa-download btn-icon"></i>Download Resume
     </a>
 </div>            </div>
         </div>
@@ -469,19 +681,43 @@
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h4>Technical Skills</h4>
-                        <p>Excel, VBA, Python, R, SQL, Power BI, Financial Modeling, DCF Analysis</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Excel</span>
+                            <span class="skill-badge">VBA</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">R</span>
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">Power BI</span>
+                            <span class="skill-badge">Financial Modeling</span>
+                            <span class="skill-badge">DCF Analysis</span>
+                        </div>
                     </div>
                     <div class="skill-category">
                         <h4>Finance Expertise</h4>
-                        <p>FP&A, Budgeting, Forecasting, Valuation, Risk Management, Strategic Planning</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">FP&A</span>
+                            <span class="skill-badge">Budgeting</span>
+                            <span class="skill-badge">Forecasting</span>
+                            <span class="skill-badge">Valuation</span>
+                            <span class="skill-badge">Risk Management</span>
+                            <span class="skill-badge">Strategic Planning</span>
+                        </div>
                     </div>
                     <div class="skill-category">
                         <h4>Languages</h4>
-                        <p>English (Native), Japanese (Professional), Spanish (Limited)</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">English (Native)</span>
+                            <span class="skill-badge">Japanese (Professional)</span>
+                            <span class="skill-badge">Spanish (Limited)</span>
+                        </div>
                     </div>
                     <div class="skill-category">
                         <h4>Certifications</h4>
-                        <p>Power BI Fundamentals, Financial Modeling & Forecasting, JLPT N3</p>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Power BI Fundamentals</span>
+                            <span class="skill-badge">Financial Modeling & Forecasting</span>
+                            <span class="skill-badge">JLPT N3</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -556,63 +792,92 @@
             <div class="portfolio-grid">
                 <a href="projects/financial_modeling.html" class="portfolio-item">
                     <div class="portfolio-content">
-                        <div>
+                        <div class="portfolio-header">
                             <h4>
                                 <span>Financial Modeling <i class="fa-solid fa-chevron-right fa-sm"></i>
                                 </span>
                             </h4>
+                        </div>
+                        <div class="portfolio-description">
                             <p>
                                 Comprehensive Excel and Python models including DCF analysis, company valuations, 
                                 and scenario planning for strategic decision-making.
                             </p>
                         </div>
-                        <span class="portfolio-badge">Excel • Python • VBA</span>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-badges">
+                                <span class="portfolio-badge">Excel</span>
+                                <span class="portfolio-badge">Python</span>
+                                <span class="portfolio-badge">VBA</span>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <a href="projects/power_bi_dashboards.html" class="portfolio-item">
                     <div class="portfolio-content">
-                        <div>
-                            <h4><span>BI Dashboards <i class="fa-solid fa-chevron-right fa-sm"></i>
+                        <div class="portfolio-header">
+                            <h4><span>Power BI Dashboards <i class="fa-solid fa-chevron-right fa-sm"></i>
                             </span>
-
                             </h4>
+                        </div>
+                        <div class="portfolio-description">
                             <p>
                                 Interactive data visualizations and business intelligence dashboards for 
                                 financial performance tracking and KPI monitoring.
                             </p>
                         </div>
-                        <span class="portfolio-badge">Power BI • DAX • SQL</span>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-badges">
+                                <span class="portfolio-badge">Power BI</span>
+                                <span class="portfolio-badge">DAX</span>
+                                <span class="portfolio-badge">SQL</span>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <a href="projects/budget_analysis.html" class="portfolio-item">
                     <div class="portfolio-content">
-                        <div>
+                        <div class="portfolio-header">
                             <h4><span>Budget Analysis <i class="fa-solid fa-chevron-right fa-sm"></i>
                             </span>
                             </h4>
+                        </div>
+                        <div class="portfolio-description">
                             <p>
                                 Advanced budgeting frameworks and variance analysis systems implemented 
                                 across multiple organizations with budgets exceeding $250,000.
                             </p>
                         </div>
-                        <span class="portfolio-badge">Budgeting • Forecasting</span>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-badges">
+                                <span class="portfolio-badge">Budgeting</span>
+                                <span class="portfolio-badge">Forecasting</span>
+                            </div>
+                        </div>
                     </div>
                 </a>
 
                 <a href="projects/strategic_planning.html" class="portfolio-item">
                     <div class="portfolio-content">
-                        <div>
+                        <div class="portfolio-header">
                             <h4><span>Strategic Planning <i class="fa-solid fa-chevron-right fa-sm"></i>
                             </span>
                             </h4>
+                        </div>
+                        <div class="portfolio-description">
                             <p>
                                 Business strategy development, SWOT analysis, and financial planning 
                                 projects that drive organizational growth and efficiency.
                             </p>
                         </div>
-                        <span class="portfolio-badge">Strategy • Analysis</span>
+                        <div class="portfolio-footer">
+                            <div class="portfolio-badges">
+                                <span class="portfolio-badge">Strategy</span>
+                                <span class="portfolio-badge">Analysis</span>
+                            </div>
+                        </div>
                     </div>
                 </a>
             </div>

@@ -182,6 +182,60 @@
             margin-right: auto;
         }
 
+        .progress-status {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light-blue);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-icon {
+            color: var(--accent-blue);
+            font-size: 1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .back-icon {
+            margin-right: 0.5rem;
+        }
+
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -194,7 +248,7 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--willamette-burgundy);
+            border-left: 4px solid var(--willamette-burgundy);
         }
 
         .experience-card h3 {
@@ -226,6 +280,7 @@
 
         .btn:hover {
             background: var(--penn-state-blue);
+            color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
         }
@@ -271,7 +326,7 @@
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Gabriel Kronisch</a>
             <a href="../index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                <i class="fas fa-arrow-left back-icon"></i>
                 Back to Portfolio
             </a>
         </div>
@@ -369,15 +424,26 @@ account infrastructure and vendor relationships.
             <div class="coming-soon-icon">
                 <i class="fas fa-chart-line"></i>
             </div>
-            <h2>Case Studies Coming Soon</h2>
+            <h2>Case Studies Under Development</h2>
             <p>
                 I'm developing detailed case studies and templates based on my budget management experience. 
                 This will include variance analysis frameworks, rolling forecast models, and the automated 
                 dashboards I've built for real organizations.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            
+            <!-- Progress Status -->
+            <div class="progress-status">
+                <div class="status-item">
+                    <i class="fas fa-calendar-alt status-icon"></i>
+                    <span>Expected: Q4 2025</span>
+                </div>
+            </div>
+
+            <div class="btn-container">
                 <a href="../index.html#contact" class="btn">Discuss My Experience</a>
-                <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-outline" download>View Full Resume</a>
+                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+                    <i class="fas fa-download btn-icon"></i>View Full Resume
+                </a>
             </div>
         </div>
     </section>

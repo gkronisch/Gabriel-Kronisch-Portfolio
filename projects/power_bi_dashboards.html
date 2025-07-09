@@ -148,6 +148,60 @@
             margin-right: auto;
         }
 
+        .progress-status {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light-blue);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-icon {
+            color: var(--willamette-burgundy);
+            font-size: 1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .back-icon {
+            margin-right: 0.5rem;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -160,7 +214,7 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--penn-state-blue);
+            border-left: 4px solid var(--accent-blue);
         }
 
         .feature-card h3 {
@@ -171,6 +225,24 @@
         .feature-card p {
             color: var(--text-light);
             line-height: 1.7;
+        }
+
+        .feature-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-icon {
+            color: var(--penn-state-blue);
+            margin-right: 0.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--penn-state-blue);
+            margin-bottom: 3rem;
         }
 
         .btn {
@@ -186,6 +258,7 @@
 
         .btn:hover {
             background: var(--accent-blue);
+            color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
         }
@@ -227,7 +300,7 @@
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Gabriel Kronisch</a>
             <a href="../index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                <i class="fas fa-arrow-left back-icon"></i>
                 Back to Portfolio
             </a>
         </div>
@@ -247,15 +320,34 @@
             <div class="coming-soon-icon">
                 <i class="fas fa-chart-pie"></i>
             </div>
-            <h2>Coming Soon</h2>
+            <h2>Portfolio Under Development</h2>
             <p>
                 I'm currently developing a collection of interactive Power BI dashboards and data visualization 
                 projects. This section will showcase financial performance tracking, KPI monitoring, and 
                 business intelligence solutions with embedded live dashboards.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            
+            <!-- Progress Status -->
+            <div class="progress-status">
+                <div class="status-item">
+                    <i class="fas fa-code status-icon"></i>
+                    <span>Development in Progress</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-calendar-alt status-icon"></i>
+                    <span>Expected: Q4 2025</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-certificate status-icon"></i>
+                    <span>CFI Power BI Fundamentals Certified</span>
+                </div>
+            </div>
+
+            <div class="btn-container">
                 <a href="../index.html#contact" class="btn">Contact Me</a>
-                <a href="https://credentials.corporatefinanceinstitute.com/aeb176f0-7fb1-4285-a37f-b70a6417648d#acc.z8K1Gmv6" class="btn btn-outline" target="_blank">View Power BI Certification</a>
+                <a href="https://credentials.corporatefinanceinstitute.com/aeb176f0-7fb1-4285-a37f-b70a6417648d#acc.z8K1Gmv6" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-certificate btn-icon"></i>View Power BI Certification
+                </a>
             </div>
         </div>
     </section>
@@ -263,31 +355,31 @@
     <!-- Planned Features -->
     <section class="section">
         <div class="container">
-            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 3rem;">Planned Dashboards</h2>
+            <h2 class="section-title">Planned Dashboards</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3><i class="fas fa-tachometer-alt" style="margin-right: 0.5rem; color: var(--penn-state-blue);"></i>Financial KPI Dashboard</h3>
+                    <h3><i class="fas fa-tachometer-alt feature-icon"></i>Financial KPI Dashboard</h3>
                     <p>
                         Real-time financial performance tracking with key metrics like revenue growth, 
                         profit margins, cash flow analysis, and budget variance reporting.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-coins" style="margin-right: 0.5rem; color: var(--penn-state-blue);"></i>Budget vs. Actual Analysis</h3>
+                    <h3><i class="fas fa-coins feature-icon"></i>Budget vs. Actual Analysis</h3>
                     <p>
                         Interactive budget comparison dashboards showing variance analysis, 
                         trend forecasting, and drill-down capabilities for detailed expense tracking.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-chart-area" style="margin-right: 0.5rem; color: var(--penn-state-blue);"></i>Executive Summary Reports</h3>
+                    <h3><i class="fas fa-chart-area feature-icon"></i>Executive Summary Reports</h3>
                     <p>
                         High-level executive dashboards with strategic metrics, portfolio performance, 
                         and automated monthly/quarterly reporting capabilities.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-database" style="margin-right: 0.5rem; color: var(--penn-state-blue);"></i>Data Integration Models</h3>
+                    <h3><i class="fas fa-database feature-icon"></i>Data Integration Models</h3>
                     <p>
                         Advanced DAX formulas and data modeling techniques for connecting multiple 
                         data sources and creating comprehensive business intelligence solutions.

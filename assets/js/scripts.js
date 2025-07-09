@@ -9,20 +9,26 @@ window.addEventListener('DOMContentLoaded', event => {
     let scrollToTopVisible = false;
     // Closes the sidebar menu
     const menuToggle = document.body.querySelector('.menu-toggle');
-    menuToggle.addEventListener('click', event => {
-        event.preventDefault();
-        sidebarWrapper.classList.toggle('active');
-        _toggleMenuIcon();
-        menuToggle.classList.toggle('active');
-    })
+    if (menuToggle) {
+        menuToggle.addEventListener('click', event => {
+            event.preventDefault();
+            sidebarWrapper.classList.toggle('active');
+            _toggleMenuIcon();
+            menuToggle.classList.toggle('active');
+            _toggleAccessibility();
+        });
+    }
 
     // Closes responsive menu when a scroll trigger link is clicked
     var scrollTriggerList = [].slice.call(document.querySelectorAll('#sidebar-wrapper .js-scroll-trigger'));
     scrollTriggerList.map(scrollTrigger => {
         scrollTrigger.addEventListener('click', () => {
             sidebarWrapper.classList.remove('active');
-            menuToggle.classList.remove('active');
-            _toggleMenuIcon();
+            if (menuToggle) {
+                menuToggle.classList.remove('active');
+                _toggleMenuIcon();
+                _toggleAccessibility();
+            }
         })
     });
 
@@ -36,6 +42,21 @@ window.addEventListener('DOMContentLoaded', event => {
         if (menuToggleTimes) {
             menuToggleTimes.classList.remove('fa-xmark');
             menuToggleTimes.classList.add('fa-bars');
+        }
+    }
+
+    function _toggleAccessibility() {
+        const menuToggle = document.body.querySelector('.menu-toggle');
+        const sidebarWrapper = document.getElementById('sidebar-wrapper');
+        
+        if (sidebarWrapper && menuToggle) {
+            const isOpen = sidebarWrapper.classList.contains('active');
+            
+            // Toggle aria-expanded on menu button
+            menuToggle.setAttribute('aria-expanded', isOpen);
+            
+            // Toggle aria-hidden on sidebar
+            sidebarWrapper.setAttribute('aria-hidden', !isOpen);
         }
     }
 

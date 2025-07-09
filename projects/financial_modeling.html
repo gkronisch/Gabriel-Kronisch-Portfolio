@@ -148,6 +148,60 @@
             margin-right: auto;
         }
 
+        .progress-status {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light-blue);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-icon {
+            color: var(--willamette-burgundy);
+            font-size: 1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .back-icon {
+            margin-right: 0.5rem;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,11 +220,24 @@
         .feature-card h3 {
             color: var(--penn-state-blue);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
 
         .feature-card p {
             color: var(--text-light);
             line-height: 1.7;
+        }
+
+        .feature-icon {
+            color: var(--willamette-burgundy);
+            margin-right: 0.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--penn-state-blue);
+            margin-bottom: 3rem;
         }
 
         .btn {
@@ -186,6 +253,7 @@
 
         .btn:hover {
             background: var(--accent-burgundy);
+            color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
         }
@@ -227,7 +295,7 @@
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Gabriel Kronisch</a>
             <a href="../index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>
+                <i class="fas fa-arrow-left back-icon"></i>
                 Back to Portfolio
             </a>
         </div>
@@ -247,15 +315,34 @@
             <div class="coming-soon-icon">
                 <i class="fas fa-chart-line"></i>
             </div>
-            <h2>Coming Soon</h2>
+            <h2>Portfolio Under Development</h2>
             <p>
                 I'm currently developing a comprehensive showcase of my financial modeling work, including 
                 DCF analysis, company valuations, scenario planning models, and automated reporting dashboards. 
                 This section will feature detailed case studies and downloadable templates.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            
+            <!-- Progress Status -->
+            <div class="progress-status">
+                <div class="status-item">
+                    <i class="fas fa-code status-icon"></i>
+                    <span>Development in Progress</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-calendar-alt status-icon"></i>
+                    <span>Expected: Q4 2025</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-clock status-icon"></i>
+                    <span>Templates Pending</span>
+                </div>
+            </div>
+
+            <div class="btn-container">
                 <a href="../index.html#contact" class="btn">Contact Me</a>
-                <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-outline" download>View Resume</a>
+                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+                    <i class="fas fa-download btn-icon"></i>View Resume
+                </a>
             </div>
         </div>
     </section>
@@ -263,31 +350,31 @@
     <!-- Planned Features -->
     <section class="section">
         <div class="container">
-            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 3rem;">What's Coming</h2>
+            <h2 class="section-title">What's Coming</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3><i class="fas fa-calculator" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>DCF Analysis Models</h3>
+                    <h3><i class="fas fa-calculator feature-icon"></i>DCF Analysis Models</h3>
                     <p>
                         Comprehensive discounted cash flow models with sensitivity analysis, scenario planning, 
                         and Monte Carlo simulations for company valuations and investment decisions.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-chart-bar" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Budget Planning Tools</h3>
+                    <h3><i class="fas fa-chart-bar feature-icon"></i>Budget Planning Tools</h3>
                     <p>
                         Advanced Excel templates for budget creation, variance analysis, and rolling forecasts 
                         based on my experience managing $250,000+ in organizational budgets.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-code" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Python & VBA Automation</h3>
+                    <h3><i class="fas fa-code feature-icon"></i>Python & VBA Automation</h3>
                     <p>
                         Automated financial reporting scripts and data processing tools that streamline 
                         financial analysis workflows and improve accuracy.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-project-diagram" style="margin-right: 0.5rem; color: var(--willamette-burgundy);"></i>Strategic Planning Models</h3>
+                    <h3><i class="fas fa-project-diagram feature-icon"></i>Strategic Planning Models</h3>
                     <p>
                         Business strategy and financial planning models used in real consulting projects, 
                         including SWOT analysis frameworks and competitive analysis tools.
