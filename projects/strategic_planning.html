@@ -71,6 +71,39 @@
             padding: 0 2rem;
         }
 
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--penn-state-blue);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(4, 30, 66, 0.1);
+            transform: rotate(15deg);
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid var(--penn-state-blue);
+            outline-offset: 2px;
+        }
+
         .nav-brand {
             font-size: 1.5rem;
             font-weight: 700;
@@ -307,6 +340,13 @@
             box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
 
+        [data-theme="dark"] .btn-secondary:hover {
+            background: var(--midnight-purple);
+            color: #000000;
+            border-color: var(--midnight-purple);
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
+        }
+
         .btn-outline {
             background: transparent;
             border: 2px solid var(--penn-state-blue);
@@ -347,10 +387,15 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
-            <a href="../index.html#portfolio" class="back-link">
-                <i class="fas fa-arrow-left back-icon"></i>
-                Back to Portfolio
-            </a>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="../index.html#portfolio" class="back-link">
+                    <i class="fas fa-arrow-left back-icon"></i>
+                    Back to Portfolio
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -480,3 +525,46 @@
     </section>
 
     <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Gabriel Kronisch. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        function initTheme() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or default to dark mode
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Update icon based on current theme
+            updateThemeIcon(savedTheme, themeIcon);
+            
+            // Add click event listener
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme, themeIcon);
+            });
+        }
+        
+        function updateThemeIcon(theme, iconElement) {
+            if (theme === 'dark') {
+                iconElement.className = 'fas fa-lightbulb';
+            } else {
+                iconElement.className = 'fas fa-moon';
+            }
+        }
+
+        // Initialize theme functionality when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+        });
+    </script>
+</body>
+</html>
