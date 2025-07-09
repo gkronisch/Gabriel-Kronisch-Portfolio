@@ -104,6 +104,20 @@
             outline-offset: 2px;
         }
 
+        /* Theme icon visibility based on data-theme attribute */
+        [data-theme="dark"] .icon-sun { 
+            display: inline; 
+        }
+        [data-theme="dark"] .icon-moon { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-sun { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-moon { 
+            display: inline; 
+        }
+
         .nav-brand {
             font-size: 1.5rem;
             font-weight: 700;
@@ -411,7 +425,8 @@
             <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
             <div class="nav-controls">
                 <button class="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                    <i class="fas fa-moon icon-moon"></i>
                 </button>
                 <a href="../index.html#portfolio" class="back-link">
                     <i class="fas fa-arrow-left back-icon"></i>
@@ -554,33 +569,35 @@
     <script>
         // Theme Toggle Functionality
         function initTheme() {
+            console.log('🎨 [Strategic Planning] Initializing theme...');
+            
             const themeToggle = document.querySelector('.theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
+            
+            console.log('🔍 [Strategic Planning] DOM Elements:', { themeToggle });
             
             // Check for saved theme preference or default to dark mode
             const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            console.log('💾 [Strategic Planning] Saved theme:', savedTheme);
             
-            // Update icon based on current theme
-            updateThemeIcon(savedTheme, themeIcon);
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            console.log('📝 [Strategic Planning] Set data-theme attribute to:', savedTheme);
             
             // Add click event listener
             themeToggle.addEventListener('click', function() {
+                console.log('👆 [Strategic Planning] Theme toggle clicked!');
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
+                console.log('🔄 [Strategic Planning] Theme change:', currentTheme, '->', newTheme);
+                
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme, themeIcon);
+                
+                // Verify the change
+                const verifyTheme = document.documentElement.getAttribute('data-theme');
+                console.log('✅ [Strategic Planning] Verified theme after change:', verifyTheme);
+                console.log('🎯 [Strategic Planning] CSS will now control icon visibility based on data-theme');
             });
-        }
-        
-        function updateThemeIcon(theme, iconElement) {
-            if (theme === 'dark') {
-                iconElement.className = 'fas fa-lightbulb';
-            } else {
-                iconElement.className = 'fas fa-moon';
-            }
         }
 
         // Initialize theme functionality when page loads

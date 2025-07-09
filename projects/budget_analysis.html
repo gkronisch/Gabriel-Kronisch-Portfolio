@@ -283,6 +283,20 @@
             outline-offset: 2px;
         }
 
+        /* Theme icon visibility based on data-theme attribute */
+        [data-theme="dark"] .icon-sun { 
+            display: inline; 
+        }
+        [data-theme="dark"] .icon-moon { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-sun { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-moon { 
+            display: inline; 
+        }
+
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -403,7 +417,8 @@
             <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
             <div class="nav-controls">
                 <button class="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                    <i class="fas fa-moon icon-moon"></i>
                 </button>
                 <a href="../index.html#portfolio" class="back-link">
                     <i class="fas fa-arrow-left back-icon"></i>
@@ -537,15 +552,13 @@ account infrastructure and vendor relationships.
     <script>
         // Theme Toggle Functionality
         function initTheme() {
+            console.log('🎨 [Budget Analysis] Initializing theme...');
+            
             const themeToggle = document.querySelector('.theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
             
             // Check for saved theme preference or default to dark mode
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            // Update icon based on current theme
-            updateThemeIcon(savedTheme, themeIcon);
             
             // Add click event listener
             themeToggle.addEventListener('click', function() {
@@ -554,16 +567,10 @@ account infrastructure and vendor relationships.
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme, themeIcon);
+                
+                console.log('🔄 [Budget Analysis] Theme changed to:', newTheme);
+                console.log('🎯 [Budget Analysis] CSS will now control icon visibility based on data-theme');
             });
-        }
-        
-        function updateThemeIcon(theme, iconElement) {
-            if (theme === 'dark') {
-                iconElement.className = 'fas fa-lightbulb';
-            } else {
-                iconElement.className = 'fas fa-moon';
-            }
         }
 
         // Initialize theme functionality when page loads
