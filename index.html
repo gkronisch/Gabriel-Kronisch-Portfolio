@@ -23,6 +23,18 @@
             --light-gray: #f7fafc;
         }
 
+        [data-theme="dark"] {
+            --penn-state-blue: #4a90ff;
+            --willamette-burgundy: #ff6b8a;
+            --light-blue: #1a202c;
+            --accent-blue: #63b3ed;
+            --accent-burgundy: #f56565;
+            --text-dark: #e2e8f0;
+            --text-light: #a0aec0;
+            --white: #1a202c;
+            --light-gray: #2d3748;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -34,6 +46,8 @@
             margin: 0;
             padding: 0;
             color: var(--text-dark);
+            background-color: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Navigation */
@@ -242,7 +256,7 @@
         }
 
         .skill-category h4 {
-            color: var(--penn-state-blue);
+            color: var(--accent-blue);
             margin-bottom: 0.5rem;
             margin-top: 0;
         }
@@ -486,6 +500,39 @@
             padding: 2rem;
         }
 
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--penn-state-blue);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(4, 30, 66, 0.1);
+            transform: rotate(15deg);
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid var(--penn-state-blue);
+            outline-offset: 2px;
+        }
+
         /* Mobile Navigation */
         .menu-toggle {
             display: none;
@@ -649,9 +696,14 @@
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -1005,8 +1057,42 @@
             }
         }
 
+        // Theme Toggle Functionality
+        function initTheme() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or default to light mode
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            // Update icon based on current theme
+            updateThemeIcon(savedTheme, themeIcon);
+            
+            // Add click event listener
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme, themeIcon);
+            });
+        }
+        
+        function updateThemeIcon(theme, iconElement) {
+            if (theme === 'dark') {
+                iconElement.className = 'fas fa-sun';
+            } else {
+                iconElement.className = 'fas fa-moon';
+            }
+        }
+
         // Add event listeners for contact links
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme functionality
+            initTheme();
+            
             // Handle hash changes (when clicking anchor links)
             window.addEventListener('hashchange', function() {
                 if (window.location.hash === '#contact') {
