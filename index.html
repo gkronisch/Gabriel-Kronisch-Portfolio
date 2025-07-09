@@ -410,24 +410,72 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 1.5rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
             color: var(--text-dark);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .contact-item:hover {
-            color: var(--penn-state-blue);
+            background: var(--willamette-burgundy);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
         }
 
         .contact-item i {
-            margin-right: 0.5rem;
             color: var(--willamette-burgundy);
+            font-size: 1.1rem;
+        }
+
+        .contact-item:hover i {
+            color: var(--white);
+        }
+
+        .contact-item i.fa-file-pdf {
+            color: #FFD700;
+        }
+
+        .contact-item:hover i.fa-file-pdf {
+            color: #FFD700;
+        }
+
+        .btn-icon.fa-download {
+            color: #FFD700;
+        }
+
+        /* Contact Section Highlight Animation */
+        .contact-highlight {
+            position: relative;
+            border-radius: 12px;
+            animation: contactPulse 0.35s ease-in-out;
+        }
+
+        @keyframes contactPulse {
+            0% {
+                box-shadow: 0 0 0 0 transparent;
+            }
+            50% {
+                box-shadow: 0 0 0 4px #FFD700, 0 0 20px #FFD700;
+            }
+            100% {
+                box-shadow: 0 0 0 0 transparent;
+            }
         }
 
         /* Footer */
@@ -594,7 +642,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-brand">Gabriel Kronisch</a>
+            <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -646,7 +694,7 @@
 <div class="btn-container">
     <a href="#portfolio" class="btn">View My Work</a>
     <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
-        <i class="fas fa-download btn-icon"></i>Download Resume
+        <i class="fas fa-download btn-icon"></i>View Resume
     </a>
 </div>            </div>
         </div>
@@ -943,6 +991,32 @@
             } else {
                 navbar.style.background = 'var(--white)';
                 navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Contact section highlight animation
+        function highlightContactSection() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.classList.add('contact-highlight');
+                setTimeout(() => {
+                    contactSection.classList.remove('contact-highlight');
+                }, 350);
+            }
+        }
+
+        // Add event listeners for contact links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle hash changes (when clicking anchor links)
+            window.addEventListener('hashchange', function() {
+                if (window.location.hash === '#contact') {
+                    setTimeout(highlightContactSection, 100);
+                }
+            });
+
+            // Handle initial page load with contact hash
+            if (window.location.hash === '#contact') {
+                setTimeout(highlightContactSection, 100);
             }
         });
     </script>
