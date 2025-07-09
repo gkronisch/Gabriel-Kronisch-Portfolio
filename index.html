@@ -20,17 +20,18 @@
             --text-dark: #2d3748;
             --text-light: #718096;
             --white: #ffffff;
-            --light-gray: #f7fafc;
+            --light-gray: #e2e8f0;
             --bronze-gold: #B8860B;
             --bright-gold: #FFD700;
+            --midnight-purple: #9b6bb8;
         }
 
         [data-theme="dark"] {
             --penn-state-blue: #4a90ff;
-            --willamette-burgundy: #ff6b8a;
+            --willamette-burgundy: #8B1538;
             --light-blue: #1a202c;
             --accent-blue: #63b3ed;
-            --accent-burgundy: #f56565;
+            --accent-burgundy: #a8476b;
             --text-dark: #e2e8f0;
             --text-light: #a0aec0;
             --white: #1a202c;
@@ -217,6 +218,7 @@
         [data-theme="dark"] .btn-secondary {
             border: 2px solid var(--midnight-purple);
             color: var(--midnight-purple);
+            background: rgba(4, 30, 66, 0.8);
         }
 
         [data-theme="dark"] .btn-secondary:hover {
@@ -318,8 +320,24 @@
             background: var(--white);
             padding: 1rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(139, 21, 56, 0.15);
             text-align: center;
+            border-left: 4px solid var(--willamette-burgundy);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 6px 25px rgba(139, 21, 56, 0.25);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .skill-category {
+            border-left: 4px solid var(--midnight-purple);
+            box-shadow: 0 4px 20px rgba(155, 107, 184, 0.15);
+        }
+
+        [data-theme="dark"] .skill-category:hover {
+            box-shadow: 0 6px 25px rgba(155, 107, 184, 0.25);
         }
 
         .skill-category h4 {
@@ -536,11 +554,15 @@
             font-weight: 500;
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
-            border: 2px solid #333;
+            border: 2px solid var(--penn-state-blue);
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             white-space: nowrap;
             flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .contact-item {
+            border: 2px solid var(--bronze-gold);
         }
 
         .contact-item:hover {
@@ -551,7 +573,7 @@
         }
 
         [data-theme="dark"] .contact-item:hover {
-            background: var(--midnight-purple);
+            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--midnight-purple) 100%);
             color: #000000;
             box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
@@ -585,24 +607,6 @@
             color: var(--bright-gold);
         }
 
-        /* Contact Section Highlight Animation */
-        .contact-highlight {
-            position: relative;
-            border-radius: 12px;
-            animation: contactPulse 0.35s ease-in-out;
-        }
-
-        @keyframes contactPulse {
-            0% {
-                box-shadow: 0 0 0 0 transparent;
-            }
-            50% {
-                box-shadow: 0 0 0 4px #FFD700, 0 0 20px #FFD700;
-            }
-            100% {
-                box-shadow: 0 0 0 0 transparent;
-            }
-        }
 
         /* Footer */
         .footer {
@@ -784,6 +788,7 @@
 
 .hero-text {
     flex: 1;
+    text-align: center;
 }
 
 /* Responsive design */
@@ -1168,16 +1173,6 @@
             }
         });
 
-        // Contact section highlight animation
-        function highlightContactSection() {
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                contactSection.classList.add('contact-highlight');
-                setTimeout(() => {
-                    contactSection.classList.remove('contact-highlight');
-                }, 350);
-            }
-        }
 
         // Theme Toggle Functionality
         function initTheme() {
@@ -1210,22 +1205,10 @@
             }
         }
 
-        // Add event listeners for contact links
+        // Initialize functionality when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize theme functionality
             initTheme();
-            
-            // Handle hash changes (when clicking anchor links)
-            window.addEventListener('hashchange', function() {
-                if (window.location.hash === '#contact') {
-                    setTimeout(highlightContactSection, 100);
-                }
-            });
-
-            // Handle initial page load with contact hash
-            if (window.location.hash === '#contact') {
-                setTimeout(highlightContactSection, 100);
-            }
         });
     </script>
 </body>
