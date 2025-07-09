@@ -436,6 +436,10 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
+        [data-theme="dark"] .portfolio-item {
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.15);
+        }
+
         [data-theme="dark"] .portfolio-item:hover {
             box-shadow: 0 8px 25px rgba(155, 107, 184, 0.25);
         }
@@ -650,6 +654,11 @@
 
         .theme-toggle:hover {
             background: linear-gradient(135deg, #4a90ff 0%, #9b6bb8 100%);
+            transform: rotate(15deg);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6347 100%);
             transform: rotate(15deg);
         }
 
@@ -1251,6 +1260,14 @@
             const sidebar = document.getElementById('sidebar-wrapper');
             
             if (menuToggle && sidebar) {
+                // Function to close the mobile menu
+                function closeMobileMenu() {
+                    sidebar.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    sidebar.setAttribute('aria-hidden', 'true');
+                }
+                
+                // Toggle menu when hamburger is clicked
                 menuToggle.addEventListener('click', function() {
                     sidebar.classList.toggle('active');
                     const isExpanded = sidebar.classList.contains('active');
@@ -1262,18 +1279,23 @@
                 const sidebarLinks = sidebar.querySelectorAll('.sidebar-nav-link');
                 sidebarLinks.forEach(link => {
                     link.addEventListener('click', function() {
-                        sidebar.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        sidebar.setAttribute('aria-hidden', 'true');
+                        closeMobileMenu();
                     });
                 });
                 
                 // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
                     if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                        sidebar.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        sidebar.setAttribute('aria-hidden', 'true');
+                        closeMobileMenu();
+                    }
+                });
+                
+                // Close menu when window is resized to desktop size
+                window.addEventListener('resize', function() {
+                    // Close sidebar if window width is greater than mobile breakpoint (768px)
+                    if (window.innerWidth > 768) {
+                        closeMobileMenu();
+                        console.log('🖥️ Window resized to desktop - mobile menu closed');
                     }
                 });
             }

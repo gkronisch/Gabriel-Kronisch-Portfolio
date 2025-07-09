@@ -95,7 +95,12 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(4, 30, 66, 0.1);
+            background: linear-gradient(135deg, #4a90ff 0%, #9b6bb8 100%);
+            transform: rotate(15deg);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6347 100%);
             transform: rotate(15deg);
         }
 
