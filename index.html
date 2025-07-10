@@ -191,8 +191,13 @@
 
         .btn:hover {
             background: var(--accent-burgundy);
+            color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        [data-theme="dark"] .btn {
+            color: var(--white);
         }
 
         [data-theme="dark"] .btn:hover {
@@ -210,7 +215,7 @@
 
         .btn-secondary:hover {
             background: var(--white);
-            color: var(--penn-state-blue);
+            color: var(--willamette-burgundy);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
@@ -224,7 +229,7 @@
         [data-theme="dark"] .btn-secondary:hover {
             background: var(--midnight-purple);
             color: #000000;
-            border-color: var(--midnight-purple);
+            border-color: #041E42;
             box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
         }
 
@@ -570,7 +575,7 @@
         }
 
         .contact-item:hover {
-            background: var(--willamette-burgundy);
+            background: linear-gradient(135deg, var(--willamette-burgundy) 0%, var(--accent-burgundy) 100%);
             color: var(--white);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
