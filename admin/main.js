@@ -57,7 +57,7 @@ function createWindow() {
             nodeIntegration: false
         },
         titleBarStyle: 'hiddenInset',
-        backgroundColor: '#fdfaf6',
+        backgroundColor: '#1a202c',
         title: 'Curiosity Projects — Admin'
     });
 
