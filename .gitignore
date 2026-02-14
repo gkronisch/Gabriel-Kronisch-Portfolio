@@ -1,2 +1,6 @@
 # CLAUDE.md file for local Claude Code usage only
 CLAUDE.md
+
+# Admin app - sensitive / local-only
+admin/.admin-config.json
+admin/node_modules/

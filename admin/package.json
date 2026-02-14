@@ -1,0 +1,12 @@
+{
+  "name": "curiosity-admin",
+  "version": "1.0.0",
+  "description": "Admin app for Curiosity Projects posts",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
