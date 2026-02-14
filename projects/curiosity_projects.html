@@ -337,10 +337,76 @@
             color: #4a5568;
         }
 
-        .post-expanded img {
+        .post-expanded-gallery {
+            position: relative;
+        }
+
+        .post-expanded-gallery img {
             width: 100%;
             display: block;
             border-radius: 16px 16px 0 0;
+        }
+
+        .post-expanded-gallery .gallery-img:not(:first-child) {
+            border-radius: 0;
+        }
+
+        /* Single-image: keep top radius. Multi-image: only first gets top radius */
+        .post-expanded-gallery.multi .gallery-img:first-child {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.85);
+            border: 1.5px solid #cbd5e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #4a5568;
+            transition: all 0.15s ease;
+            z-index: 3;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .gallery-nav:hover {
+            background: #ffffff;
+            border-color: var(--sage);
+            color: var(--forest);
+        }
+
+        .gallery-nav.prev { left: 12px; }
+        .gallery-nav.next { right: 12px; }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 0;
+            background: var(--white);
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--sage);
         }
 
         .post-expanded-body {
@@ -460,7 +526,7 @@
             <button class="post-expanded-close" id="post-expanded-close">
                 <i class="fas fa-times"></i>
             </button>
-            <img id="expanded-img" src="" alt="" />
+            <div class="post-expanded-gallery" id="expanded-gallery"></div>
             <div class="post-expanded-body">
                 <div class="post-expanded-subject" id="expanded-subject"></div>
                 <div class="post-expanded-desc" id="expanded-desc"></div>
@@ -482,7 +548,7 @@
                 id: "1",
                 subject: "Is the Day/Night Line a Bell Curve?",
                 description: "I noticed the solar terminator \u2014 the boundary between day and night on a world map \u2014 looks suspiciously like a normal distribution. So I tested it. Using the terminator\u2019s actual equation (arctan(-cos(\u03bb)/tan(\u03b4))), I fit a Gaussian curve across all four seasons and compared R\u00b2 values. Turns out the solstices come closest (R\u00b2 \u2248 0.956), mid-February is decent but drifts (R\u00b2 \u2248 0.865), and the equinoxes fall apart entirely. At the solstices, the terminator curve is ~95.6% bell curve, and in mid-February it\u2019s ~86.5%.",
-                image: "terminator_gaussian_1.png",
+                images: ["terminator_gaussian_1.png"],
                 date: "2026-02-13"
             }
         ];
@@ -506,12 +572,28 @@
 
         var allPosts = [];
 
+        // Migrate legacy single-image posts to images array
+        function migratePosts(posts) {
+            posts.forEach(function(p) {
+                if (p.image && !p.images) {
+                    p.images = [p.image];
+                    delete p.image;
+                }
+                if (!p.images) p.images = [];
+            });
+            return posts;
+        }
+
+        function getFirstImage(post) {
+            return (post.images && post.images.length) ? post.images[0] : '';
+        }
+
         async function loadPosts() {
             try {
                 var res = await fetch('../data/posts.json');
                 if (!res.ok) throw new Error('Failed');
                 var data = await res.json();
-                allPosts = data.posts || [];
+                allPosts = migratePosts(data.posts || []);
             } catch (e) {
                 allPosts = FALLBACK_POSTS;
             }
@@ -522,14 +604,18 @@
             var grid = document.getElementById('posts-grid');
             grid.innerHTML = '';
 
-            posts.forEach(function(post, index) {
+            posts.forEach(function(post) {
                 var card = document.createElement('div');
                 card.className = 'post-card';
 
                 var result = truncateText(post.description, CHAR_LIMIT);
+                var thumb = getFirstImage(post);
 
-                var html =
-                    '<img class="post-card-image" src="../assets/img/posts/' + post.image + '" alt="' + post.subject.replace(/"/g, '&quot;') + '">' +
+                var html = '';
+                if (thumb) {
+                    html += '<img class="post-card-image" src="../assets/img/posts/' + thumb + '" alt="' + post.subject.replace(/"/g, '&quot;') + '">';
+                }
+                html +=
                     '<div class="post-card-body">' +
                         '<div class="post-card-subject">' + post.subject + '</div>' +
                         '<div class="post-card-desc' + (result.truncated ? ' truncated' : '') + '">' + result.text + '</div>' +
@@ -546,15 +632,60 @@
             });
         }
 
-        // Expanded post modal
+        // Expanded post modal with image gallery
+        var galleryIndex = 0;
+        var galleryImages = [];
+
         function openPost(post) {
-            document.getElementById('expanded-img').src = '../assets/img/posts/' + post.image;
-            document.getElementById('expanded-img').alt = post.subject;
+            galleryImages = post.images || [];
+            galleryIndex = 0;
+            renderGallery();
+
             document.getElementById('expanded-subject').textContent = post.subject;
             document.getElementById('expanded-desc').innerHTML = post.description;
             document.getElementById('expanded-date').textContent = post.date;
             document.getElementById('post-overlay').classList.add('visible');
             document.body.style.overflow = 'hidden';
+        }
+
+        function renderGallery() {
+            var gallery = document.getElementById('expanded-gallery');
+            if (!galleryImages.length) {
+                gallery.innerHTML = '';
+                return;
+            }
+
+            var isMulti = galleryImages.length > 1;
+            gallery.className = 'post-expanded-gallery' + (isMulti ? ' multi' : '');
+
+            var html = '<img class="gallery-img" src="../assets/img/posts/' + galleryImages[galleryIndex] + '" alt="" />';
+
+            if (isMulti) {
+                html += '<button class="gallery-nav prev" onclick="galleryPrev()"><i class="fas fa-chevron-left"></i></button>';
+                html += '<button class="gallery-nav next" onclick="galleryNext()"><i class="fas fa-chevron-right"></i></button>';
+                html += '<div class="gallery-dots">';
+                for (var i = 0; i < galleryImages.length; i++) {
+                    html += '<button class="gallery-dot' + (i === galleryIndex ? ' active' : '') + '" onclick="galleryGo(' + i + ')"></button>';
+                }
+                html += '</div>';
+            }
+
+            gallery.innerHTML = html;
+        }
+
+        function galleryPrev() {
+            galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+            renderGallery();
+        }
+
+        function galleryNext() {
+            galleryIndex = (galleryIndex + 1) % galleryImages.length;
+            renderGallery();
+        }
+
+        function galleryGo(idx) {
+            galleryIndex = idx;
+            renderGallery();
         }
 
         function closePost() {

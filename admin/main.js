@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
@@ -17,6 +17,30 @@ function getConfig() {
         return JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
     }
     return null;
+}
+
+function ensureDirs() {
+    const dataDir = path.dirname(POSTS_FILE);
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+    if (!fs.existsSync(IMAGES_DIR)) fs.mkdirSync(IMAGES_DIR, { recursive: true });
+}
+
+function readPosts() {
+    if (!fs.existsSync(POSTS_FILE)) return { posts: [] };
+    var data = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
+    // Migrate legacy single-image posts
+    data.posts.forEach(function(p) {
+        if (p.image && !p.images) {
+            p.images = [p.image];
+            delete p.image;
+        }
+        if (!p.images) p.images = [];
+    });
+    return data;
+}
+
+function writePosts(data) {
+    fs.writeFileSync(POSTS_FILE, JSON.stringify(data, null, 2));
 }
 
 let mainWindow;
@@ -69,71 +93,102 @@ ipcMain.handle('verify-password', (_event, password) => {
 });
 
 ipcMain.handle('get-posts', () => {
-    if (!fs.existsSync(POSTS_FILE)) return { posts: [] };
-    return JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
+    return readPosts();
 });
 
-ipcMain.handle('save-post', async (_event, { subject, description, imageName, imageData }) => {
-    // Ensure directories exist
-    const dataDir = path.dirname(POSTS_FILE);
-    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-    if (!fs.existsSync(IMAGES_DIR)) fs.mkdirSync(IMAGES_DIR, { recursive: true });
+// Open native file picker for images
+ipcMain.handle('pick-images', async () => {
+    const result = await dialog.showOpenDialog(mainWindow, {
+        properties: ['openFile', 'multiSelections'],
+        filters: [{ name: 'Images', extensions: ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'] }]
+    });
+    if (result.canceled || !result.filePaths.length) return [];
 
-    // Write image
-    const imageBuffer = Buffer.from(imageData, 'base64');
-    fs.writeFileSync(path.join(IMAGES_DIR, imageName), imageBuffer);
+    return result.filePaths.map(function(fp) {
+        var fileData = fs.readFileSync(fp);
+        return {
+            name: Date.now() + '_' + path.basename(fp).replace(/\s+/g, '_'),
+            data: fileData.toString('base64')
+        };
+    });
+});
 
-    // Read or create posts data
-    let data = { posts: [] };
-    if (fs.existsSync(POSTS_FILE)) {
-        data = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
-    }
+// Create new post (multi-image)
+ipcMain.handle('save-post', async (_event, { subject, description, images }) => {
+    ensureDirs();
 
-    const newPost = {
+    // images = array of { name, data (base64) }
+    images.forEach(function(img) {
+        var buf = Buffer.from(img.data, 'base64');
+        fs.writeFileSync(path.join(IMAGES_DIR, img.name), buf);
+    });
+
+    var data = readPosts();
+
+    var newPost = {
         id: Date.now().toString(),
         subject: subject,
         description: description,
-        image: imageName,
+        images: images.map(function(i) { return i.name; }),
         date: new Date().toISOString().split('T')[0]
     };
 
     data.posts.push(newPost);
-    fs.writeFileSync(POSTS_FILE, JSON.stringify(data, null, 2));
-
+    writePosts(data);
     return newPost;
 });
 
-ipcMain.handle('delete-post', (_event, postId) => {
-    if (!fs.existsSync(POSTS_FILE)) return false;
+// Update post (subject, description, images with add/remove/reorder)
+ipcMain.handle('update-post', (_event, { id, subject, description, existingImages, newImages }) => {
+    ensureDirs();
+    var data = readPosts();
+    var post = data.posts.find(function(p) { return p.id === id; });
+    if (!post) return false;
 
-    let data = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
-    const post = data.posts.find(p => p.id === postId);
+    // Save new image files
+    if (newImages && newImages.length) {
+        newImages.forEach(function(img) {
+            var buf = Buffer.from(img.data, 'base64');
+            fs.writeFileSync(path.join(IMAGES_DIR, img.name), buf);
+        });
+    }
+
+    // Determine final image list (existingImages in order + newImages appended)
+    var finalImages = (existingImages || []).slice();
+    if (newImages && newImages.length) {
+        newImages.forEach(function(img) { finalImages.push(img.name); });
+    }
+
+    // Delete removed images from disk
+    var oldImages = post.images || [];
+    oldImages.forEach(function(name) {
+        if (finalImages.indexOf(name) === -1) {
+            var fp = path.join(IMAGES_DIR, name);
+            if (fs.existsSync(fp)) fs.unlinkSync(fp);
+        }
+    });
+
+    // Update post
+    if (subject !== undefined) post.subject = subject;
+    if (description !== undefined) post.description = description;
+    post.images = finalImages;
+
+    writePosts(data);
+    return post;
+});
+
+ipcMain.handle('delete-post', (_event, postId) => {
+    var data = readPosts();
+    var post = data.posts.find(function(p) { return p.id === postId; });
 
     if (post) {
-        // Delete image
-        const imgPath = path.join(IMAGES_DIR, post.image);
-        if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath);
-
-        // Remove from data
-        data.posts = data.posts.filter(p => p.id !== postId);
-        fs.writeFileSync(POSTS_FILE, JSON.stringify(data, null, 2));
+        (post.images || []).forEach(function(name) {
+            var fp = path.join(IMAGES_DIR, name);
+            if (fs.existsSync(fp)) fs.unlinkSync(fp);
+        });
+        data.posts = data.posts.filter(function(p) { return p.id !== postId; });
+        writePosts(data);
     }
 
     return true;
-});
-
-ipcMain.handle('update-post', (_event, { id, subject, description }) => {
-    if (!fs.existsSync(POSTS_FILE)) return false;
-
-    let data = JSON.parse(fs.readFileSync(POSTS_FILE, 'utf8'));
-    const post = data.posts.find(p => p.id === id);
-
-    if (post) {
-        if (subject !== undefined) post.subject = subject;
-        if (description !== undefined) post.description = description;
-        fs.writeFileSync(POSTS_FILE, JSON.stringify(data, null, 2));
-        return post;
-    }
-
-    return false;
 });
