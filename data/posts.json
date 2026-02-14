@@ -5,7 +5,7 @@
       "subject": "Is the Day/Night Line Close to a Normal Distribution?",
       "description": "I noticed the solar terminator (the boundary between day and night on a world map) looks suspiciously like a normal distribution, so I tested it. Using the terminator's actual equation (arctan(-cos(λ)/tan(δ))), I fit a Gaussian curve across all four seasons and compared R² values. It turns out the solstices come closest (!) (R² ≈ 0.956), mid-February is decent but drifts (R² ≈ 0.865), and the equinoxes fall apart entirely. At the solstices, the terminator curve is ~95.6% bell curve / normal distribution, and in mid-February it's ~86.5%.",
       "image": "terminator_gaussian_1.png",
-      "date": "2025-02-13"
+      "date": "2026-02-13"
     }
   ]
 }
