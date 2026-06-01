@@ -411,77 +411,166 @@
         </div>
     </section>
 
-    <!-- Coming Soon Section -->
-    <section class="coming-soon">
+    <!-- Featured Project: CP-NS Merger -->
+    <section class="section" style="background: var(--light-gray); padding: 4rem 2rem;">
         <div class="container">
-            <div class="coming-soon-icon">
-                <i class="fas fa-chart-line"></i>
-            </div>
-            <h2>Portfolio Under Development</h2>
-            <p>
-                I'm currently developing a comprehensive showcase of my financial modeling work, including 
-                DCF analysis, company valuations, scenario planning models, and automated reporting dashboards. 
-                This section will feature detailed case studies and downloadable templates.
-            </p>
-            
-            <!-- Progress Status -->
-            <div class="progress-status">
-                <div class="status-item">
-                    <i class="fas fa-code status-icon"></i>
-                    <span>Development in Progress</span>
+            <h2 class="section-title">Featured Project</h2>
+            <div style="background: var(--white); border-radius: 12px; box-shadow: 0 6px 30px rgba(139,21,56,0.15); border-left: 6px solid var(--willamette-burgundy); padding: 2.5rem; max-width: 900px; margin: 0 auto;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                    <span style="background: var(--willamette-burgundy); color: #fff; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">M&amp;A Case Study</span>
+                    <span style="color: var(--text-light); font-style: italic;">Penn State MFIN · FIN 880 · 2025</span>
                 </div>
-                <div class="status-item">
-                    <i class="fas fa-calendar-alt status-icon"></i>
-                    <span>Expected: Q4 2025</span>
+                <h3 style="color: var(--penn-state-blue); font-size: 1.8rem; margin-bottom: 1rem;">Canadian Pacific × Norfolk Southern Merger Analysis</h3>
+                <p style="color: var(--text-dark); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Led the financial modeling workstream for a group analysis of CP's $31B proposed acquisition of Norfolk Southern. Built a full merger model including standalone DCF valuations for both companies, synergy projections, accretion/dilution analysis, and a pro forma combined income statement. Modeled revenue synergies from route rationalization and cost synergies from headcount and fleet consolidation. Final deliverable included an executive summary, merger proposal, and a live Excel workbook presented to faculty.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="text-align: center; padding: 1rem; background: var(--light-blue); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--penn-state-blue);">$31B</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Deal Size Modeled</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: var(--light-blue); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--penn-state-blue);">DCF + Comps</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Valuation Methods</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: var(--light-blue); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--penn-state-blue);">Pro Forma</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Combined Financials</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: var(--light-blue); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--penn-state-blue);">Excel + PDF</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Final Deliverables</div>
+                    </div>
                 </div>
-                <div class="status-item">
-                    <i class="fas fa-clock status-icon"></i>
-                    <span>Templates Pending</span>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="../index.html#contact" class="btn" style="font-size: 0.9rem; padding: 0.7rem 1.5rem;">Request Model Files</a>
                 </div>
-            </div>
-
-            <div class="btn-container">
-                <a href="../index.html#contact" class="btn">Contact Me</a>
-                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
-                    <i class="fas fa-download btn-icon"></i>View Resume
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Planned Features -->
+    <!-- Projects Grid -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">What's Coming</h2>
+            <h2 class="section-title">Quantitative Models</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3><i class="fas fa-calculator feature-icon"></i>DCF Analysis Models</h3>
+                    <h3><i class="fas fa-random feature-icon"></i>Monte Carlo Simulations (GBM)</h3>
                     <p>
-                        Comprehensive discounted cash flow models with sensitivity analysis, scenario planning, 
-                        and Monte Carlo simulations for company valuations and investment decisions.
+                        Implemented Geometric Brownian Motion-based Monte Carlo simulations in both Excel VBA and Python to model stock price paths and value options under uncertainty. Built macro-driven simulation engines capable of running thousands of iterations, with dynamic output tables and distribution histograms for risk quantification.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Excel VBA</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Python</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Stochastic Modeling</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-calculator feature-icon"></i>Capital Budgeting & Sensitivity Analysis</h3>
+                    <p>
+                        Built multi-scenario capital budgeting models with tornado charts for one-way sensitivity analysis and data tables for two-way scenario planning. Models feature dynamic input drivers, automated NPV/IRR calculations, and breakeven analysis — structured to support real investment decision frameworks.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">NPV / IRR</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Tornado Charts</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Scenario Analysis</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-area feature-icon"></i>Financial Statement Forecasting</h3>
+                    <p>
+                        Developed integrated 3-statement models (Income Statement, Balance Sheet, Cash Flow) with revenue build-up from operational drivers, automated balance sheet balancing, and rolling forecast logic. Built to support both historical analysis and multi-year projections with flexible assumption inputs.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">3-Statement Model</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Driver-Based</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Excel</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line feature-icon"></i>CAPM & Equity Analysis</h3>
+                    <p>
+                        Implemented Capital Asset Pricing Model in Python (Google Colab) to estimate cost of equity for individual securities. Analysis included beta estimation via OLS regression against market returns, risk premium calculations, and comparison of model-implied vs. market pricing. Applied to real equity positions in stock pitch research.
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Python</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">OLS Regression</span>
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">CAPM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Python & VBA Section -->
+    <section class="section" style="background: var(--light-gray); padding: 4rem 2rem;">
+        <div class="container">
+            <h2 class="section-title">Python &amp; VBA Automation</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 650px; margin: 0 auto 3rem; font-size: 1.1rem;">
+                Hands-on automation work from the Penn State Advanced Financial Modeling course — using code to eliminate repetitive analysis and scale modeling workflows.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fab fa-python feature-icon"></i>Python Monte Carlo Engine</h3>
+                    <p>
+                        Wrote Python scripts to run Monte Carlo simulations for portfolio risk analysis, including GBM path generation, return distribution modeling, and Value-at-Risk estimation. Implemented in Google Colab with clean visualizations using matplotlib.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-chart-bar feature-icon"></i>Budget Planning Tools</h3>
+                    <h3><i class="fas fa-cogs feature-icon"></i>VBA Macro Library</h3>
                     <p>
-                        Advanced Excel templates for budget creation, variance analysis, and rolling forecasts 
-                        based on my experience managing $250,000+ in organizational budgets.
+                        Built a library of reusable Excel VBA user-defined functions (UDFs) for financial calculations — including custom IRR solvers, automated formatting routines, and simulation drivers that loop over thousands of Monte Carlo iterations without manual intervention.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-code feature-icon"></i>Python & VBA Automation</h3>
+                    <h3><i class="fas fa-file-excel feature-icon"></i>Automated Reporting Tools</h3>
                     <p>
-                        Automated financial reporting scripts and data processing tools that streamline 
-                        financial analysis workflows and improve accuracy.
+                        Developed VBA-powered Excel templates that auto-populate financial dashboards from raw input data, apply conditional formatting rules, and generate summary tables — reducing manual reporting time and improving consistency across financial models.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stock Pitches Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Equity Research &amp; Stock Pitches</h2>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+                <div class="feature-card">
+                    <h3><i class="fas fa-bullseye feature-icon"></i>Reddit Inc. (RDDT) — Long Pitch</h3>
+                    <p>
+                        Developed a full buy-side equity pitch on Reddit following its 2024 IPO. Analysis covered user monetization trajectory, advertising revenue comps, community flywheel dynamics, and a DCF-backed price target. Delivered as a formal presentation with supporting slide deck.
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Buy Recommendation</span>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-project-diagram feature-icon"></i>Strategic Planning Models</h3>
+                    <h3><i class="fas fa-search-dollar feature-icon"></i>NICA / International Equity — Research</h3>
                     <p>
-                        Business strategy and financial planning models used in real consulting projects, 
-                        including SWOT analysis frameworks and competitive analysis tools.
+                        Completed an institutional-style stock pitch briefing worksheet covering quantitative screening, qualitative thesis development, and risk factor analysis. Structured using sell-side research templates covering investment thesis, valuation, and catalysts.
                     </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--light-blue); color: var(--accent-blue); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">Equity Research</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align: center; padding: 4rem 2rem; background: var(--light-gray);">
+        <div class="container">
+            <h2 style="color: var(--penn-state-blue); margin-bottom: 1rem;">Want to see the model files?</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                Excel workbooks, Python notebooks, and presentation decks available on request.
+            </p>
+            <div class="btn-container">
+                <a href="../index.html#contact" class="btn">Get In Touch</a>
+                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+                    <i class="fas fa-download btn-icon"></i>View Resume
+                </a>
             </div>
         </div>
     </section>
