@@ -3,3 +3,13 @@ CLAUDE.md
 
 # Admin app - local only, not needed on GitHub Pages
 admin/
+
+# Group project files with student names - keep local only
+assets/downloads/cp-ns-financial-model.xlsx
+assets/downloads/cp-ns-merger-proposal.pdf
+
+# Not ours to publish - keep local only
+# cp-ns-presentation.pptx is a Kish Bank lecture deck, not the CP-NS deck
+assets/downloads/cp-ns-presentation.pptx
+# Course workbooks created by the instructor
+assets/downloads/finmod-topic*.xlsm
