@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Gabriel Kronisch: full CV. Experience, education, competitions, leadership, honors and certifications." />
+    <title>CV - Gabriel Kronisch</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script>
+        (function () {
+            var t = 'dark';
+            try { t = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --penn-state-blue: #041E42;
+            --accent-blue: #2c5aa0;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --white: #ffffff;
+            --light-gray: #edf2f7;
+            --midnight-purple: #9b6bb8;
+            --card-border: rgba(4, 30, 66, 0.12);
+        }
+
+        [data-theme="dark"] {
+            --penn-state-blue: #4a90ff;
+            --accent-blue: #63b3ed;
+            --text-dark: #e2e8f0;
+            --text-light: #a0aec0;
+            --white: #1a202c;
+            --light-gray: #2d3748;
+            --card-border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text-dark);
+            background: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a { color: var(--accent-blue); }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 72px;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+        }
+
+        .nav-brand {
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+        }
+
+        .nav-controls { display: flex; align-items: center; gap: 0.75rem; }
+
+        .back-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .back-link:hover { color: var(--penn-state-blue); }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--penn-state-blue);
+            font-size: 1.15rem;
+            cursor: pointer;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+        }
+
+        [data-theme="dark"] .icon-moon,
+        [data-theme="light"] .icon-sun { display: none; }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: calc(72px + clamp(2rem, 6vw, 3.5rem)) clamp(1rem, 4vw, 2rem) 3rem;
+        }
+
+        header.cv-header { margin-bottom: 2.5rem; }
+
+        header.cv-header h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--penn-state-blue);
+            margin: 0 0 0.25rem;
+        }
+
+        header.cv-header p { margin: 0.2rem 0; color: var(--text-light); }
+
+        .cv-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--penn-state-blue);
+            border-radius: 5px;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn:hover { background: var(--penn-state-blue); color: var(--white); }
+
+        section { margin-bottom: 2.75rem; scroll-margin-top: 90px; }
+
+        section > h2 {
+            font-size: 1.5rem;
+            color: var(--penn-state-blue);
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 0.4rem;
+            margin: 0 0 1.25rem;
+        }
+
+        .entry { margin-bottom: 1.5rem; }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .entry h3 {
+            font-size: 1.12rem;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .entry .org { color: var(--penn-state-blue); font-weight: 600; }
+
+        .entry .when {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .entry ul {
+            margin: 0.45rem 0 0;
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .entry li { margin-bottom: 0.25rem; }
+
+        .entry p { margin: 0.4rem 0 0; color: var(--text-light); }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 2rem;
+        }
+
+        .plain-list {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .plain-list li { margin-bottom: 0.4rem; }
+
+        .footer {
+            background: #041E42;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer p { margin: 0; }
+
+        @media (max-width: 640px) {
+            .two-col { grid-template-columns: 1fr; }
+            .back-link .label { display: none; }
+        }
+
+        @media print {
+            .navbar, .cv-actions, .footer { display: none; }
+            main { padding-top: 0; }
+            body { background: #fff; color: #000; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" aria-label="Main">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">Gabriel Kronisch</a>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun icon-sun"></i>
+                    <i class="fas fa-moon icon-moon"></i>
+                </button>
+                <a href="../index.html#background" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span class="label">Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="cv-header">
+            <h1>Gabriel Kronisch</h1>
+            <p>Investment research, risk systems and financial modeling · Founder, Atlas Keystone LLC</p>
+            <p>MFIN, Penn State · FMVA · Santa Cruz, California</p>
+            <div class="cv-actions">
+                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn" download><i class="fas fa-download"></i>Résumé (PDF)</a>
+                <a href="mailto:gkronisch19@gmail.com" class="btn"><i class="fas fa-envelope"></i>Email</a>
+                <a href="https://linkedin.com/in/gabriel-kronisch" class="btn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i>LinkedIn</a>
+            </div>
+        </header>
+
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Founder &amp; Manager · <span class="org">Atlas Keystone LLC</span></h3>
+                    <span class="when">Jul 2026 – present</span>
+                </div>
+                <p>Trading-technology and research company. Sole founder and operator.</p>
+                <ul>
+                    <li>Develop options and equity playbooks with defined risk parameters and systematic post-trade review.</li>
+                    <li>Built a multi-agent trading and research pipeline on AWS, with automated strategies running in paper trading.</li>
+                    <li>Quantitative research, including mean-reversion and pairs-based approaches; automated reporting and trade tracking in Python.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Senior Financial Support Specialist · <span class="org">Bay Area Community College Consortium</span></h3>
+                    <span class="when">Nov 2025 – Feb 2026</span>
+                </div>
+                <p>Financial operations for a $69M consortium budget supporting 28 community colleges and 800+ K-12 schools.</p>
+                <ul>
+                    <li>Wrote a Python script to automate 98 budget change request forms, cutting per-form cycle time by 64%.</li>
+                    <li>Processed $27.9M+ in budget transfers and journal entries across 28+ project codes.</li>
+                    <li>Handled 138+ reimbursements, 40+ invoices and 64+ credit card reconciliation items, with a 100% acceptance rate from the Business Services Office.</li>
+                    <li>Quarterly Perkins indirect-cost invoicing, monthly card reconciliations and weekly budget updates from general-ledger extracts.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Strategy Consultant · <span class="org">Impulse</span> (contract)</h3>
+                    <span class="when">Sep 2024 – Nov 2025</span>
+                </div>
+                <ul>
+                    <li>Weekly strategy sessions with the CEO of a self-improvement app on product, business strategy and UI.</li>
+                    <li>SWOT analysis and a long-term business plan balancing engagement and profitability.</li>
+                    <li>Designed 15+ UI/UX improvements and advised on freemium monetization and launch timing; 3+ features shipped from these recommendations.</li>
+                    <li>Specified habit-tracking milestone logic using moving averages, and a subscription-cap strategy.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Director of Strategic Planning, Finance &amp; Business · <span class="org">Penn State GPSA</span></h3>
+                    <span class="when">Aug 2024 – May 2025</span>
+                </div>
+                <ul>
+                    <li>Managed and allocated the $108,000 annual operating budget.</li>
+                    <li>Reviewed 38+ funding bills with Excel-based sensitivity analysis.</li>
+                    <li>Built automated cash-flow metrics and monthly and annual forecasts; found 20+ miscategorized bills.</li>
+                    <li>Recommendations supported a successful case for increased future funding.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Treasurer · <span class="org">Business Leaders for Change, Penn State</span></h3>
+                    <span class="when">Aug 2024 – May 2025</span>
+                </div>
+                <p>Built the budget for the organization's inaugural sustainability events, cut projected costs 25% in live negotiations, and secured 100% of requested funding. Helped run the Earth Day Panel &amp; Pitch Competition.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Financial Officer · <span class="org">Community Action Fund for Equity and Sustainability (CAFES), Willamette</span></h3>
+                    <span class="when">Aug 2022 – May 2024</span>
+                </div>
+                <ul>
+                    <li>Ran full-cycle financial operations for ~$130,000 a year in student-fee revenue across 49+ grant projects.</li>
+                    <li>Created an expense-approval system that brought mischarges to zero and compliance to 100% over two years.</li>
+                    <li>Designed a multi-year transition plan for recurring $20–30K grants, redirecting $50K+ toward new projects.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Treasurer · <span class="org">Willamette Events Board</span></h3>
+                    <span class="when">Apr 2023 – May 2024</span>
+                </div>
+                <p>Managed a $120,000+ annual budget across about 12 large events, with 100% approval on ~$60,000 in funding requests and ~25% lower projected spending.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Treasurer · <span class="org">Japan Studies Student Leaders, Willamette</span></h3>
+                    <span class="when">Aug 2021 – May 2024</span>
+                </div>
+                <p>Budgets, expenditures and funding requests for the organization's events.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3><span class="org">Penn State Smeal College of Business</span> · Master of Finance</h3>
+                    <span class="when">2024 – 2025</span>
+                </div>
+                <p>GPA 3.89. Merit Scholar; CFA Program Student Scholarship. STEM-designated program: financial modeling (Excel, VBA, Python), valuation, portfolio management.</p>
+            </div>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3><span class="org">Willamette University</span> · B.A. Economics (departmental honors) and B.A. Japanese Studies</h3>
+                    <span class="when">2020 – 2024</span>
+                </div>
+                <p>Summa cum laude (3.93), Phi Beta Kappa, Dean's Scholar.</p>
+            </div>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3><span class="org">Tokyo International University</span> · Business Economics, Japanese Studies</h3>
+                    <span class="when">2022 – 2023</span>
+                </div>
+                <p>Year-long study abroad in Saitama, Japan.</p>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Lead Exposure and Stock Returns in G20 Countries</h3>
+                    <span class="when">2023 – present</span>
+                </div>
+                <p>Working paper. Panel regressions on the Environmental Performance Index's lead-exposure measure and stock returns across G20 countries. Currently being revised.</p>
+            </div>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Do Cultural Factors Explain Differences in Investor Behavior between Japan and the US?</h3>
+                    <span class="when">2024</span>
+                </div>
+                <p>Interdisciplinary senior thesis, Economics and Japanese Studies, Willamette University.</p>
+            </div>
+        </section>
+
+        <section id="competitions">
+            <h2>Competitions</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>CFO · <span class="org">International Collegiate Business Strategy Competition (ICBSC)</span></h3>
+                    <span class="when">Jan – Apr 2024</span>
+                </div>
+                <ul>
+                    <li>Team won Best Presentation, Runner-up Best Overall Performance and Runner-up Best Documents among international university teams.</li>
+                    <li>167% total revenue growth (22% CAGR) over the simulated tenure, including 90.8% year-over-year growth in year 6.</li>
+                    <li>Biweekly capital budgeting, cash-flow forecasting and P&amp;L analysis across 20+ simulated quarters; sensitivity analysis and Bayesian updating on investment decisions.</li>
+                </ul>
+            </div>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Team Captain · <span class="org">Humana-Mays Healthcare Analytics Case Competition</span></h3>
+                    <span class="when">Aug – Oct 2024</span>
+                </div>
+                <p>Analyzed records for about 1.9 million clients (up to 33.6 million rows) with SQL, Python and pandas, including a local neural-network model.</p>
+            </div>
+        </section>
+
+        <section id="community">
+            <h2>Community</h2>
+            <div class="entry">
+                <div class="entry-head">
+                    <h3>Founder · <span class="org">Financial Literacy Lessons and Financial Literacy Club, Willamette</span></h3>
+                    <span class="when">Nov 2023 – May 2024</span>
+                </div>
+                <p>Won a CAFES grant and partnered with Central Willamette Credit Union to run a term of open lessons on credit, debt, investing, budgeting and retirement, then founded a club to keep them going.</p>
+            </div>
+        </section>
+
+        <section id="honors">
+            <h2>Honors and certifications</h2>
+            <div class="two-col">
+                <ul class="plain-list">
+                    <li>Phi Beta Kappa (2024)</li>
+                    <li>Willamette Senior Key (2024)</li>
+                    <li>Richard M. Gillis Senior Award in Economics (2024)</li>
+                    <li>CFA Program Student Scholarship (2024)</li>
+                    <li>Oliver C. Brown Scholarship, Economics (2023)</li>
+                    <li>Helen Yeomans Luther Scholarship, Japanese Studies (2023)</li>
+                    <li>Charles D. Allis Scholarship, Economics (2022)</li>
+                </ul>
+                <ul class="plain-list">
+                    <li>Financial Modeling &amp; Valuation Analyst (FMVA®), Corporate Finance Institute (2026)</li>
+                    <li>AI for Business &amp; Finance, Columbia Business School Executive Education / Wall Street Prep (2025)</li>
+                    <li>Relational Databases and SQL, Stanford Online (2025)</li>
+                    <li>Power BI Fundamentals, Corporate Finance Institute (2025)</li>
+                    <li>JLPT N3 (2023)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="plain-list">
+                <li><strong>Programming and data:</strong> Python (pandas, NumPy, scikit-learn), R, SQL, Excel and VBA</li>
+                <li><strong>Systems:</strong> AWS, LLM agent pipelines (Claude API), React Native / Expo, Firebase, Supabase</li>
+                <li><strong>Finance:</strong> financial modeling and valuation, DCF, options, risk management, budgeting and forecasting</li>
+                <li><strong>Languages:</strong> English (native), Japanese (professional), Spanish (limited)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Gabriel Kronisch</p>
+    </footer>
+
+    <script>
+        document.querySelector('.theme-toggle').addEventListener('click', function () {
+            var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Gabriel Kronisch - Strategic Planning and Business Strategy. SWOT analysis, financial planning, and strategic consulting experience." />
+    <title>Strategic Planning - Gabriel Kronisch Portfolio</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --penn-state-blue: #041E42;
+            --willamette-burgundy: #8B1538;
+            --light-blue: #f8fbff;
+            --accent-blue: #2c5aa0;
+            --accent-burgundy: #a8476b;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --white: #ffffff;
+            --light-gray: #f7fafc;
+        }
+
+        [data-theme="dark"] {
+            --penn-state-blue: #4a90ff;
+            --willamette-burgundy: #8B1538;
+            --light-blue: #1a202c;
+            --accent-blue: #63b3ed;
+            --accent-burgundy: #a8476b;
+            --text-dark: #e2e8f0;
+            --text-light: #a0aec0;
+            --white: #1a202c;
+            --light-gray: #2d3748;
+            --midnight-purple: #9b6bb8;
+            --bronze-gold: #B8860B;
+            --bright-gold: #FFD700;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        /* Navigation Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--penn-state-blue);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .theme-toggle:hover {
+            background: linear-gradient(135deg, #4a90ff 0%, #9b6bb8 100%);
+            transform: rotate(15deg);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6347 100%);
+            transform: rotate(15deg);
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid var(--penn-state-blue);
+            outline-offset: 2px;
+        }
+
+        /* Theme icon visibility based on data-theme attribute */
+        [data-theme="dark"] .icon-sun { 
+            display: inline; 
+        }
+        [data-theme="dark"] .icon-moon { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-sun { 
+            display: none; 
+        }
+        [data-theme="light"] .icon-moon { 
+            display: inline; 
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--penn-state-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent-burgundy) 0%, var(--willamette-burgundy) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-section {
+            background: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 2.5rem;
+            color: var(--willamette-burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .result-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-metric {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon h2 {
+            font-size: 2.5rem;
+            color: var(--penn-state-blue);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-status {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light-blue);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-icon {
+            color: var(--accent-blue);
+            font-size: 1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(4, 30, 66, 0.3);
+        }
+
+        .btn-icon {
+            margin-right: 0.5rem;
+        }
+
+        .btn-icon.fa-download {
+            color: var(--bright-gold);
+        }
+
+        .back-icon {
+            margin-right: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(139, 21, 56, 0.15);
+            border-left: 4px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 6px 25px rgba(139, 21, 56, 0.25);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .project-card {
+            box-shadow: 0 4px 20px rgba(155, 107, 184, 0.15);
+        }
+
+        [data-theme="dark"] .project-card:hover {
+            box-shadow: 0 6px 25px rgba(155, 107, 184, 0.25);
+        }
+
+        .project-card h3 {
+            color: var(--penn-state-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+        }
+
+        [data-theme="dark"] .btn:hover {
+            background: var(--midnight-purple);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
+        }
+
+        [data-theme="dark"] .btn-secondary:hover {
+            background: var(--midnight-purple);
+            color: #000000;
+            border-color: var(--midnight-purple);
+            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--penn-state-blue);
+            color: var(--penn-state-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        [data-theme="dark"] .footer {
+            background: #041E42;
+            color: #ffffff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun icon-sun"></i>
+                    <i class="fas fa-moon icon-moon"></i>
+                </button>
+                <a href="../index.html#portfolio" class="back-link">
+                    <i class="fas fa-arrow-left back-icon"></i>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Strategic Planning</h1>
+            <p class="subtitle">Business Strategy & Financial Planning for Growth</p>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 1rem;">Strategic Impact</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">Measurable results from strategic planning initiatives</p>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Revenue Growth</h3>
+                    <div class="result-metric">167%</div>
+                    <div class="result-description">Total revenue growth in ICBSC competition through strategic planning</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Features Implemented</h3>
+                    <div class="result-metric">3+</div>
+                    <div class="result-description">Product features implemented from strategic recommendations at Impulse</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Cost Reduction</h3>
+                    <div class="result-metric">25%</div>
+                    <div class="result-description">Average cost reduction achieved through strategic budget optimization</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Competition Awards</h3>
+                    <div class="result-metric">3</div>
+                    <div class="result-description">Awards won for strategic planning in international business competition</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--penn-state-blue); margin-bottom: 3rem;">Strategic Planning Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Impulse App Strategy Consulting</h3>
+                    <p class="project-meta">Current | Self-Improvement Mobile App</p>
+                    <p>
+                        Weekly strategic consulting with CEO on app development, business strategy, and UI optimization. 
+                        Created comprehensive SWOT analysis and long-term business plans balancing user engagement 
+                        and profitability, resulting in multiple implemented features.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>ICBSC Global Business Competition</h3>
+                    <p class="project-meta">2024 | Chief Financial Officer Role</p>
+                    <p>
+                        Led financial strategy in 11-week competitive simulation, performing sensitivity analysis 
+                        and Bayesian updating on investments. Delivered 90.8% YoY revenue growth through strategic 
+                        reinvestment and earned Best Presentation award among international teams.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Penn State GPSA Strategic Planning</h3>
+                    <p class="project-meta">2024-2025 | $108,000 Budget Oversight</p>
+                    <p>
+                        Developed data-driven recommendations that supported successful case for increased future funding. 
+                        Created modernized budgeting formats and strategic allocation frameworks that improved 
+                        decision-making clarity across the organization.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Sustainability Strategy Implementation</h3>
+                    <p class="project-meta">2022-2024 | Multi-Year Financial Planning</p>
+                    <p>
+                        Designed multi-year financial transition plan using straight-line depreciation modeling 
+                        for recurring grants. Successfully redirected $50K+ in funding toward more impactful 
+                        startup projects aligned with organizational goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="text-align: center; padding: 4rem 2rem; background: var(--light-gray);">
+        <div class="container">
+            <h2 style="color: var(--penn-state-blue); margin-bottom: 1rem;">Want to discuss strategy work?</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                SWOT frameworks, business plans, and detailed case study materials available on request.
+            </p>
+            <div class="btn-container">
+                <a href="../index.html#contact" class="btn">Get In Touch</a>
+                <a href="../assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+                    <i class="fas fa-download btn-icon"></i>View Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Gabriel Kronisch. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        function initTheme() {
+            console.log('🎨 [Strategic Planning] Initializing theme...');
+            
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            console.log('🔍 [Strategic Planning] DOM Elements:', { themeToggle });
+            
+            // Check for saved theme preference or default to dark mode
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            console.log('💾 [Strategic Planning] Saved theme:', savedTheme);
+            
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            console.log('📝 [Strategic Planning] Set data-theme attribute to:', savedTheme);
+            
+            // Add click event listener
+            themeToggle.addEventListener('click', function() {
+                console.log('👆 [Strategic Planning] Theme toggle clicked!');
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                console.log('🔄 [Strategic Planning] Theme change:', currentTheme, '->', newTheme);
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Verify the change
+                const verifyTheme = document.documentElement.getAttribute('data-theme');
+                console.log('✅ [Strategic Planning] Verified theme after change:', verifyTheme);
+                console.log('🎯 [Strategic Planning] CSS will now control icon visibility based on data-theme');
+            });
+        }
+
+        // Initialize theme functionality when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+        });
+    </script>
+</body>
+</html>

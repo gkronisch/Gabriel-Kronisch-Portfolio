@@ -1,0 +1,104 @@
+{
+  "_readme": "Cards for the Projects grid on index.html, shown in this order. status: live | testing | building | prototype | tool. visible: false hides a card without deleting it. url: null means no link.",
+  "projects": [
+    {
+      "id": "atlas-keystone",
+      "name": "Atlas Keystone",
+      "status": "live",
+      "blurb": "The trading-technology and research company I founded and run. Written playbooks with defined risk, multi-agent research pipelines on AWS, and a post-trade review of every position.",
+      "tags": ["Python", "AWS", "LLM agents"],
+      "url": "https://atlaskeystone.llc",
+      "visible": true
+    },
+    {
+      "id": "lovescout",
+      "name": "LoveScout",
+      "status": "testing",
+      "blurb": "AI matchmaking app in private testing on Google Play. Claude sub-agents read only a published list of consented profile fields and propose a short list of matches with reasons. The person decides.",
+      "tags": ["React Native", "Firebase", "Claude API", "AWS"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "timecraft",
+      "name": "TimeCraft",
+      "status": "live",
+      "blurb": "Gamified Pomodoro timer with project tracking, achievements and analytics.",
+      "tags": ["JavaScript", "Supabase", "Vercel"],
+      "url": "https://gettimecraft.app",
+      "visible": true
+    },
+    {
+      "id": "mogo",
+      "name": "MoGo",
+      "status": "prototype",
+      "blurb": "Group movie picker. Recommends films that maximize the whole group's satisfaction by minimizing the spread of predicted ratings: a Sharpe ratio for movie night.",
+      "tags": ["Expo", "Supabase", "Claude API", "TMDb"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "silentjobs",
+      "name": "SilentJobs",
+      "status": "prototype",
+      "blurb": "Job search on silent mode: turns hours of job-board browsing into a short, curated stream of relevant postings.",
+      "tags": ["Python", "Automation"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "craveai",
+      "name": "CraveAI",
+      "status": "prototype",
+      "blurb": "AI meal finder that suggests what to order by mood, budget and diet, built on a pipeline of restaurant menu data.",
+      "tags": ["React Native", "Supabase", "Python"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "beatsite",
+      "name": "BeatSite",
+      "status": "prototype",
+      "blurb": "A private, browser-based drum machine in a single HTML file. No build step, no server, no accounts.",
+      "tags": ["HTML", "Web Audio"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "cardmaxx",
+      "name": "CardMaxx",
+      "status": "tool",
+      "blurb": "My own credit-card offer tracker. A local scraper collects my card offers into SQLite, and a Claude chat tells me which card to use where. No bank linking.",
+      "tags": ["Python", "Playwright", "Expo", "Claude API"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "mac-tools",
+      "name": "Mac automations",
+      "status": "tool",
+      "blurb": "Small tools I use daily: ScanCents (scan a receipt, Claude reads it, it lands in a spreadsheet) and Finder Quick Actions for PDF to Markdown, Markdown to PDF and PDF to JPEG.",
+      "tags": ["Python", "Automator", "Claude API", "Gemini API"],
+      "url": null,
+      "visible": true
+    },
+    {
+      "id": "sanebox-homemade",
+      "name": "Email triage (working name)",
+      "status": "tool",
+      "blurb": "Local, privacy-first email triage. A machine-learning model sorts Gmail into folders, learns from every move, snoozes mail and sends a daily digest. Hidden until it has a new name and ships without personal data.",
+      "tags": ["Python", "scikit-learn", "Gmail API"],
+      "url": null,
+      "visible": false
+    },
+    {
+      "id": "dosetrack",
+      "name": "dosetrack",
+      "status": "building",
+      "blurb": "Private, local-first tracker for Android and Windows. Hidden: started November 2026, nothing shipped yet, and it's personal.",
+      "tags": ["Flutter"],
+      "url": null,
+      "visible": false
+    }
+  ]
+}

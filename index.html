@@ -3,10 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Gabriel Kronisch - MFIN Financial Analyst Portfolio. Expert in FP&A, financial modeling, budgeting, and strategic planning." />
+    <meta name="description" content="Gabriel Kronisch: investment research, risk systems and financial modeling. Founder of Atlas Keystone LLC. Projects, research, finance work and background." />
     <meta name="author" content="Gabriel Kronisch" />
-    <title>Gabriel Kronisch - Financial Analyst Portfolio</title>
+    <title>Gabriel Kronisch</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <script>
+        // Apply the saved theme before first paint (avoids a light-mode flash)
+        (function () {
+            var t = 'dark';
+            try { t = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts -->
@@ -19,12 +27,19 @@
             --accent-blue: #2c5aa0;
             --accent-burgundy: #a8476b;
             --text-dark: #2d3748;
-            --text-light: #718096;
+            --text-light: #4a5568;
             --white: #ffffff;
-            --light-gray: #e2e8f0;
+            --light-gray: #edf2f7;
             --bronze-gold: #B8860B;
             --bright-gold: #FFD700;
             --midnight-purple: #9b6bb8;
+            --card-border: rgba(4, 30, 66, 0.12);
+
+            --status-live: #276749;
+            --status-testing: #975a16;
+            --status-building: #2c5aa0;
+            --status-prototype: #6b46c1;
+            --status-tool: #4a5568;
         }
 
         [data-theme="dark"] {
@@ -40,15 +55,18 @@
             --midnight-purple: #9b6bb8;
             --bronze-gold: #B8860B;
             --bright-gold: #FFD700;
+            --card-border: rgba(255, 255, 255, 0.12);
+
+            --status-live: #68d391;
+            --status-testing: #f6ad55;
+            --status-building: #63b3ed;
+            --status-prototype: #b794f4;
+            --status-tool: #a0aec0;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -62,13 +80,9 @@
             overflow-x: hidden;
         }
 
-        /* Smooth transitions for layout changes */
-        .nav-container,
-        .nav-brand,
-        .nav-controls,
-        .container {
-            transition: all 0.2s ease-out;
-        }
+        section[id] { scroll-margin-top: 80px; }
+
+        a { color: var(--accent-blue); }
 
         /* Navigation */
         .navbar {
@@ -86,23 +100,10 @@
         .navbar.scrolled {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            height: 80px;
         }
 
-        [data-theme="dark"] .navbar {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            padding: 1rem 0;
-            height: 80px;
-        }
-
-        [data-theme="dark"] .navbar.scrolled {
-            background: rgba(26, 32, 44, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            height: 80px;
-        }
+        [data-theme="dark"] .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        [data-theme="dark"] .navbar.scrolled { background: rgba(26, 32, 44, 0.95); }
 
         .nav-container {
             display: flex;
@@ -110,8 +111,7 @@
             align-items: center;
             padding: 0 clamp(1rem, 4vw, 2rem);
             width: 100%;
-            box-sizing: border-box;
-            min-height: 60px;
+            min-height: 48px;
         }
 
         .nav-brand {
@@ -119,7 +119,6 @@
             font-weight: 700;
             color: var(--penn-state-blue);
             text-decoration: none;
-            flex-shrink: 0;
             white-space: nowrap;
         }
 
@@ -128,7 +127,7 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            gap: 2rem;
+            gap: 1.75rem;
         }
 
         .nav-link {
@@ -138,519 +137,27 @@
             transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: var(--penn-state-blue);
-        }
+        .nav-link:hover { color: var(--penn-state-blue); }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--accent-blue) 100%);
-            color: var(--white);
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        [data-theme="dark"] .hero {
-            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--midnight-purple) 100%);
-        }
-
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero .description {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.8;
-            line-height: 1.8;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--willamette-burgundy);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--willamette-burgundy);
-        }
-
-        .btn:hover {
-            background: var(--accent-burgundy);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
-        }
-
-        [data-theme="dark"] .btn {
-            color: #ffffff !important;
-        }
-
-        [data-theme="dark"] .btn:hover {
-            background: var(--midnight-purple);
-            color: #000000;
-            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--willamette-burgundy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        [data-theme="dark"] .btn-secondary {
-            border: 2px solid var(--midnight-purple);
-            color: var(--midnight-purple) !important;
-            background: rgba(4, 30, 66, 0.8);
-        }
-
-        [data-theme="dark"] .btn-secondary:hover {
-            background: var(--midnight-purple);
-            color: #000000 !important;
-            border-color: #041E42;
-            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
-        }
-
-        .btn-icon {
-            margin-right: 0.5rem;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Sections */
-        .section {
-            padding: clamp(3rem, 8vw, 5rem) 2rem;
-        }
-
-        .section-alt {
-            background: var(--light-gray);
-        }
-
-        /* Section spacing improvements */
-        .section-header {
-            margin-bottom: clamp(2rem, 6vw, 4rem);
-        }
-
-        .hero {
-            padding: clamp(6rem, 12vw, 8rem) 2rem clamp(4rem, 8vw, 6rem);
-        }
-
-        /* Content spacing within sections */
-        .about-content {
-            gap: clamp(2rem, 6vw, 4rem);
-        }
-
-        .experience-item {
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .portfolio-grid {
-            gap: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .contact-content p {
-            margin-bottom: clamp(1.5rem, 4vw, 2rem);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            color: var(--penn-state-blue);
-            margin-bottom: 1rem;
-        }
-
-        .section-header .subtitle {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .skill-category {
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(139, 21, 56, 0.15);
-            text-align: center;
-            border-left: 4px solid var(--willamette-burgundy);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            box-shadow: 0 6px 25px rgba(139, 21, 56, 0.25);
-            transform: translateY(-2px);
-        }
-
-        [data-theme="dark"] .skill-category {
-            border-left: 4px solid var(--midnight-purple);
-            box-shadow: 0 4px 20px rgba(155, 107, 184, 0.15);
-        }
-
-        [data-theme="dark"] .skill-category:hover {
-            box-shadow: 0 6px 25px rgba(155, 107, 184, 0.25);
-        }
-
-        .skill-category h4 {
-            color: var(--penn-state-blue);
-            margin-bottom: 0.5rem;
-            margin-top: 0;
-        }
-
-        .skill-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            justify-content: center;
-        }
-
-        .skill-badge {
-            background: var(--light-blue);
-            color: var(--penn-state-blue);
-            padding: 0.3rem 0.8rem;
-            border-radius: 14px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(4, 30, 66, 0.1);
-            transition: all 0.2s ease;
-            cursor: default;
-            line-height: 1.1;
-        }
-
-        [data-theme="dark"] .skill-badge {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .skill-badge:hover {
-            background: var(--penn-state-blue);
-            color: var(--white);
-            transform: translateY(-1px);
-            box-shadow: 0 3px 12px rgba(4, 30, 66, 0.25);
-            border-color: var(--penn-state-blue);
-        }
-
-        .skill-badge:focus {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 2px;
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--willamette-burgundy);
-        }
-
-        [data-theme="dark"] .experience-item {
-            border-left: 4px solid var(--midnight-purple);
-        }
-
-        .experience-header {
-            margin-bottom: 1rem;
-        }
-
-        .experience-header h3 {
-            color: var(--penn-state-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-meta {
-            color: var(--text-light);
-            font-style: italic;
-        }
-
-        /* Portfolio Section */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .portfolio-item {
-            position: relative;
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            height: 100%;
-            border-left: 4px solid var(--accent-blue);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        [data-theme="dark"] .portfolio-item {
-            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.15);
-        }
-
-        [data-theme="dark"] .portfolio-item:hover {
-            box-shadow: 0 8px 25px rgba(155, 107, 184, 0.25);
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 280px;
-        }
-
-        .portfolio-header {
-            flex-shrink: 0;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-description {
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-footer {
-            flex-shrink: 0;
-            margin-top: auto;
-        }
-
-        .portfolio-item h4 {
-            color: var(--penn-state-blue);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-item h4 span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background-color: #33ccff6e;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        [data-theme="dark"] .portfolio-item h4 span {
-            background-color: #0e475a;
-        }
-
-        .portfolio-item p {
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .portfolio-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 1rem;
-        }
-
-        .portfolio-badge {
-            display: inline-block;
-            background: var(--light-blue);
-            color: var(--penn-state-blue);
-            padding: 0.3rem 0.8rem;
-            border-radius: 14px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(4, 30, 66, 0.1);
-            transition: all 0.2s ease;
-            line-height: 1.1;
-        }
-
-        .portfolio-badge:hover {
-            background: var(--penn-state-blue);
-            color: var(--white);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(4, 30, 66, 0.2);
-        }
-
-        [data-theme="dark"] .portfolio-badge {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        [data-theme="dark"] .portfolio-badge:hover {
-            background: var(--midnight-purple);
-            color: #000000;
-            box-shadow: 0 2px 8px rgba(155, 107, 184, 0.3);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .contact-item {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: var(--white);
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid var(--penn-state-blue);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        [data-theme="dark"] .contact-item {
-            border: 2px solid var(--penn-state-blue);
-        }
-
-        .contact-item:hover {
-            background: linear-gradient(135deg, var(--willamette-burgundy) 0%, var(--willamette-burgundy) 70%, #FFD700 100%);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
-        }
-
-        [data-theme="dark"] .contact-item:hover {
-            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--midnight-purple) 100%);
-            color: #000000;
-            box-shadow: 0 4px 15px rgba(155, 107, 184, 0.3);
-        }
-
-        [data-theme="dark"] .contact-item:hover i {
-            color: #000000;
-        }
-
-        [data-theme="dark"] .contact-item:hover i.fa-file-pdf {
-            color: var(--bright-gold);
-        }
-
-        .contact-item i {
-            color: var(--willamette-burgundy);
-            font-size: 1.1rem;
-        }
-
-        .contact-item:hover i {
-            color: var(--white);
-        }
-
-        .contact-item i.fa-file-pdf {
-            color: var(--bright-gold);
-        }
-
-        .contact-item:hover i.fa-file-pdf {
-            color: var(--bright-gold);
-        }
-
-        .btn-icon.fa-download {
-            color: var(--bright-gold);
-        }
-
-
-        /* Footer */
-        .footer {
-            background: var(--penn-state-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 1rem;
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 300;
-            font-size: 0.9rem;
-        }
-
-        [data-theme="dark"] .footer {
-            background: #041E42;
-            color: #ffffff;
-        }
-
-        /* Navigation Controls */
         .nav-controls {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            flex-shrink: 0;
         }
 
-        .theme-toggle {
+        .theme-toggle,
+        .menu-toggle {
             background: none;
             border: none;
             color: var(--penn-state-blue);
-            font-size: 1.2rem;
             cursor: pointer;
             padding: 0.5rem;
             border-radius: 50%;
             transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -665,51 +172,26 @@
 
         [data-theme="dark"] .theme-toggle:hover {
             background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6347 100%);
-            transform: rotate(15deg);
         }
 
-        .theme-toggle:focus {
+        .theme-toggle:focus-visible,
+        .menu-toggle:focus-visible {
             outline: 2px solid var(--penn-state-blue);
             outline-offset: 2px;
         }
 
-        /* Theme icon visibility based on data-theme attribute */
-        [data-theme="dark"] .icon-sun { 
-            display: inline; 
-        }
-        [data-theme="dark"] .icon-moon { 
-            display: none; 
-        }
-        [data-theme="light"] .icon-sun { 
-            display: none; 
-        }
-        [data-theme="light"] .icon-moon { 
-            display: inline; 
-        }
+        [data-theme="dark"] .icon-sun { display: inline; }
+        [data-theme="dark"] .icon-moon { display: none; }
+        [data-theme="light"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-moon { display: inline; }
 
-        /* Mobile Navigation */
         .menu-toggle {
             display: none;
-            background: none;
-            border: none;
-            color: var(--penn-state-blue);
             font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
             border-radius: 4px;
-            transition: all 0.3s ease;
         }
 
-        .menu-toggle:hover {
-            background: rgba(4, 30, 66, 0.1);
-        }
-
-        .menu-toggle:focus {
-            outline: 2px solid var(--penn-state-blue);
-            outline-offset: 2px;
-        }
-
-        /* Sidebar Navigation */
+        /* Mobile sidebar */
         #sidebar-wrapper {
             position: fixed;
             top: 0;
@@ -724,20 +206,15 @@
             overflow-y: auto;
         }
 
-        #sidebar-wrapper.active {
-            transform: translateX(0);
-        }
+        #sidebar-wrapper.active { transform: translateX(0); }
 
         .sidebar-nav {
             list-style: none;
-            padding: 0;
+            padding: 4rem 0 0;
             margin: 0;
-            padding-top: 4rem;
         }
 
-        .sidebar-nav-item {
-            border-bottom: 1px solid var(--light-gray);
-        }
+        .sidebar-nav-item { border-bottom: 1px solid var(--light-gray); }
 
         .sidebar-nav-link {
             display: block;
@@ -754,111 +231,553 @@
             padding-left: 2.5rem;
         }
 
-        .sidebar-nav-link:focus {
-            outline: 2px solid var(--penn-state-blue);
-            outline-offset: -2px;
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            background: var(--willamette-burgundy);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--willamette-burgundy);
         }
+
+        .btn:hover {
+            background: var(--accent-burgundy);
+            border-color: var(--accent-burgundy);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid currentColor;
+            color: inherit;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: currentColor;
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--penn-state-blue);
+            border: 2px solid var(--penn-state-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--penn-state-blue);
+            border-color: var(--penn-state-blue);
+            color: var(--white);
+            box-shadow: none;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--penn-state-blue) 0%, var(--accent-blue) 100%);
+            color: #ffffff;
+            margin-top: 80px;
+            padding: clamp(4rem, 9vw, 6rem) 1rem clamp(3.5rem, 7vw, 5rem);
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #5b3a78 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: clamp(2rem, 5vw, 3.5rem);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: 50% 22%;
+            border: 5px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .hero-text { flex: 1; }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            line-height: 1.15;
+            margin: 0 0 0.75rem;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+        }
+
+        .hero .creds {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin: 0 0 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .hero .description {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.75;
+            opacity: 0.92;
+            margin: 0 0 2rem;
+            max-width: 560px;
+        }
+
+        .hero .btn-container { justify-content: flex-start; }
+
+        .hero .btn-secondary { color: #ffffff; }
+
+        /* Sections */
+        .section { padding: clamp(3.5rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem); }
+        .section-alt { background: var(--light-gray); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+        }
+
+        .section-header .eyebrow {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 0.4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--penn-state-blue);
+            margin: 0;
+        }
+
+        .section-header .lede {
+            max-width: 640px;
+            margin: 0.75rem auto 0;
+            color: var(--text-light);
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Now */
+        .now-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: clamp(2rem, 5vw, 3.5rem);
+            align-items: center;
+        }
+
+        .now-text p {
+            margin: 0 0 1.1rem;
+            line-height: 1.8;
+        }
+
+        .now-text .btn { margin-top: 0.5rem; }
+
+        .stat-tiles {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .stat-tile {
+            padding: 1.25rem 1.5rem;
+            border-left: 4px solid var(--midnight-purple);
+        }
+
+        .stat-tile .num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--penn-state-blue);
+            line-height: 1.1;
+        }
+
+        .stat-tile .label { color: var(--text-light); }
+
+        /* Projects */
+        .project-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            justify-content: center;
+            margin: -1rem 0 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            color: inherit;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        a.project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--penn-state-blue);
+        }
+
+        .project-card p {
+            margin: 0 0 1rem;
+            color: var(--text-light);
+            flex-grow: 1;
+        }
+
+        .project-link {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            border: 1.5px solid currentColor;
+            white-space: nowrap;
+        }
+
+        .status::before {
+            content: "";
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .status-live { color: var(--status-live); }
+        .status-testing { color: var(--status-testing); }
+        .status-building { color: var(--status-building); }
+        .status-prototype { color: var(--status-prototype); }
+        .status-tool { color: var(--status-tool); }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.2rem 0.65rem;
+            border-radius: 14px;
+            background: var(--light-blue);
+            color: var(--penn-state-blue);
+            border: 1px solid var(--card-border);
+        }
+
+        .projects-fallback {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Research */
+        .research-list {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .research-item { padding: 1.75rem; }
+
+        .research-item .kicker {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--midnight-purple);
+            margin: 0 0 0.4rem;
+        }
+
+        .research-item h3 {
+            margin: 0 0 0.6rem;
+            color: var(--penn-state-blue);
+            font-size: 1.3rem;
+        }
+
+        .research-item p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .research-item.method { border-left: 4px solid var(--midnight-purple); }
+
+        /* Work */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .work-card {
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            border-top: 4px solid var(--accent-blue);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .work-card h3 {
+            margin: 0 0 0.6rem;
+            color: var(--penn-state-blue);
+        }
+
+        .work-card p {
+            margin: 0 0 1rem;
+            color: var(--text-light);
+        }
+
+        /* Background */
+        .timeline {
+            list-style: none;
+            margin: 0 0 3rem;
+            padding: 0;
+            border-left: 2px solid var(--card-border);
+        }
+
+        .timeline li {
+            position: relative;
+            padding: 0 0 1.75rem 1.75rem;
+        }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 0.45rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--midnight-purple);
+        }
+
+        .timeline .when {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .timeline h3 {
+            margin: 0.1rem 0 0.35rem;
+            font-size: 1.15rem;
+            color: var(--penn-state-blue);
+        }
+
+        .timeline p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .facts-card { padding: 1.5rem; }
+
+        .facts-card h3 {
+            margin: 0 0 0.9rem;
+            font-size: 1.1rem;
+            color: var(--penn-state-blue);
+        }
+
+        .facts-card ul {
+            margin: 0;
+            padding-left: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .facts-card li { margin-bottom: 0.35rem; }
+
+        /* Photography */
+        .photo-banner {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-left: 4px solid var(--bronze-gold);
+        }
+
+        .photo-banner .icon {
+            font-size: 2.5rem;
+            color: var(--bronze-gold);
+            flex-shrink: 0;
+        }
+
+        .photo-banner h2 {
+            margin: 0 0 0.4rem;
+            color: var(--penn-state-blue);
+        }
+
+        .photo-banner p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        /* Contact */
+        .contact-content {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.4rem;
+            border-radius: 25px;
+            border: 2px solid var(--penn-state-blue);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--penn-state-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i { color: var(--willamette-burgundy); }
+        [data-theme="dark"] .contact-item i { color: var(--midnight-purple); }
+        .contact-item:hover i { color: inherit; }
+        .contact-item i.fa-file-pdf { color: var(--bronze-gold); }
+
+        /* Footer */
+        .footer {
+            background: #041E42;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer p { margin: 0; }
 
         /* Responsive */
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
-            }
+        @media (max-width: 900px) {
+            .nav-menu { gap: 1.1rem; }
         }
 
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+        @media (max-width: 820px) {
+            .nav-menu { display: none; }
+            .menu-toggle { display: block; }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .menu-toggle {
-                display: block;
-            }
+            .hero .description { margin-left: auto; margin-right: auto; }
+            .hero .btn-container { justify-content: center; }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .profile-image { width: 200px; height: 200px; }
 
-            .contact-info {
-                gap: 1rem;
-            }
-
-            .contact-item {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.95rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
+            .now-grid { grid-template-columns: 1fr; }
         }
-        
-        .hero-content {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
 
-.hero-image {
-    flex-shrink: 0;
-}
+        @media (max-width: 480px) {
+            .profile-image { width: 170px; height: 170px; }
+            .photo-banner { flex-direction: column; text-align: center; }
+            .btn { width: 100%; justify-content: center; }
+        }
 
-.profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    border: 5px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.profile-image:hover {
-    transform: scale(1.05);
-}
-
-.hero-text {
-    flex: 1;
-    text-align: center;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-        padding: 1rem;
-    }
-    
-    .profile-image {
-        width: 220px;
-        height: 220px;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile-image {
-        width: 180px;
-        height: 180px;
-    }
-}
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition: none !important; }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main">
         <div class="nav-container">
-            <a href="https://gabrielkronisch.com" class="nav-brand">Gabriel Kronisch</a>
+            <a href="#home" class="nav-brand">Gabriel Kronisch</a>
             <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#now" class="nav-link">Now</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#background" class="nav-link">Background</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-controls">
@@ -874,489 +793,417 @@
     </nav>
 
     <!-- Mobile Navigation Sidebar -->
-    <nav id="sidebar-wrapper" aria-hidden="true">
+    <nav id="sidebar-wrapper" aria-hidden="true" aria-label="Mobile">
         <ul class="sidebar-nav">
-            <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link js-scroll-trigger" href="#home">Home</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link js-scroll-trigger" href="#experience">Experience</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#home">Home</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#now">Now</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#projects">Projects</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#research">Research</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#work">Work</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#background">Background</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#photography">Photography</a></li>
+            <li class="sidebar-nav-item"><a class="sidebar-nav-link" href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-container">
+    <!-- Hero -->
+    <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-image">
-                <img src="assets/img/Headshot.jpg" alt="Gabriel Kronisch" class="profile-image">
-            </div>
+            <img src="assets/img/headshot-web.jpg" alt="Gabriel Kronisch" class="profile-image" width="260" height="260">
             <div class="hero-text">
-                <h1>Gabriel Kronisch, MFIN</h1>
-                <p class="subtitle">Aspiring Financial Analyst and FP&A Specialist</p>
+                <h1>Gabriel Kronisch</h1>
+                <p class="tagline">Investment research, risk systems and financial modeling</p>
+                <p class="creds">Founder, Atlas Keystone LLC · MFIN, Penn State · FMVA</p>
                 <p class="description">
-                    Master of Finance graduate from Penn State Smeal College of Business with expertise in 
-                    financial modeling, budgeting, strategic planning, and data analysis. Passionate about 
-                    driving organizational efficiency and profitability through data-driven insights.
+                    I trade options and equities under a written rulebook and build the research and
+                    risk software around it. I also build apps and take photographs.
                 </p>
-<div class="btn-container">
-    <a href="#portfolio" class="btn">View My Work</a>
-    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
-        <i class="fas fa-download btn-icon"></i>View Resume
-    </a>
-</div>            </div>
+                <div class="btn-container">
+                    <a href="#projects" class="btn">See what I'm building</a>
+                    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i>Résumé
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
+    <!-- Now -->
+    <section id="now" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="subtitle">Get to Know Me</p>
-                <h2>About Me</h2>
+                <p class="eyebrow">Now</p>
+                <h2>Atlas Keystone</h2>
             </div>
-            <div class="about-content">
-                <div class="about-text">
+            <div class="now-grid">
+                <div class="now-text">
                     <p>
-                        As a Master of Finance graduate from Penn State's Smeal College of Business, I bring 
-                        a unique combination of analytical rigor and strategic thinking to financial analysis 
-                        and planning roles.
+                        Since April 2026 I've traded options and equities in my own account under a written
+                        rulebook, and built the software around it. Every position starts with a filed thesis,
+                        stop, target and risk budget, and every closed trade is reviewed against its plan.
                     </p>
                     <p>
-                        My academic journey includes dual B.A. majors in Economics and Japanese Studies 
-                        from Willamette University, along with extensive international study in Japan that has 
-                        enriched my global perspective and problem-solving approach.
+                        The systems run on AWS: LLM-based multi-agent research pipelines, monitoring that alerts
+                        me at filed risk levels, and automated strategies in paper trading. I place every live
+                        order by hand.
                     </p>
-                    <p>
-                        With extensive hands-on experience managing budgets exceeding a total of $250,000, conducting 
-                        financial modeling, and providing strategic business recommendations, I'm passionate about 
-                        helping organizations make data-driven decisions that drive growth and efficiency.
-                    </p>
+                    <a href="https://atlaskeystone.llc" class="btn" target="_blank" rel="noopener">
+                        Visit Atlas Keystone <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Technical Skills</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge">Excel</span>
-                            <span class="skill-badge">VBA</span>
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">R</span>
-                            <span class="skill-badge">SQL</span>
-                            <span class="skill-badge">Power BI</span>
-                            <span class="skill-badge">Financial Modeling</span>
-                            <span class="skill-badge">DCF Analysis</span>
-                        </div>
+                <div class="stat-tiles">
+                    <div class="card stat-tile">
+                        <div class="num">800+</div>
+                        <div class="label">trading decisions logged against a plan</div>
                     </div>
-                    <div class="skill-category">
-                        <h4>Finance Expertise</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge">FP&A</span>
-                            <span class="skill-badge">Budgeting</span>
-                            <span class="skill-badge">Forecasting</span>
-                            <span class="skill-badge">Valuation</span>
-                            <span class="skill-badge">Risk Management</span>
-                            <span class="skill-badge">Strategic Planning</span>
-                        </div>
+                    <div class="card stat-tile">
+                        <div class="num">100+</div>
+                        <div class="label">strategy tests documented</div>
                     </div>
-                    <div class="skill-category">
-                        <h4>Languages</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge">English (Native)</span>
-                            <span class="skill-badge">Japanese (Professional)</span>
-                            <span class="skill-badge">Spanish (Limited)</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Certifications</h4>
-                        <div class="skill-badges">
-                            <span class="skill-badge">Power BI Fundamentals</span>
-                            <span class="skill-badge">Financial Modeling & Forecasting</span>
-                            <span class="skill-badge">JLPT N3</span>
-                        </div>
+                    <div class="card stat-tile">
+                        <div class="num">~½</div>
+                        <div class="label">of them rejected on the data</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <p class="subtitle">Professional Background</p>
-                <h2>Experience</h2>
+                <p class="eyebrow">Building</p>
+                <h2>Projects</h2>
+                <p class="lede">Companies, apps and tools I've built, from live products to prototypes.</p>
             </div>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Strategy Consultant | Impulse</h3>
-                    <p class="experience-meta">September 2024 - Present</p>
-                </div>
-                <p>
-                    Consult weekly with CEO on self-improvement app development, business strategy, and UI optimization. 
-                    Created comprehensive SWOT analysis and long-term business plans, resulting in 3+ implemented 
-                    features from strategic recommendations.
-                </p>
+            <div class="project-legend" aria-label="Status key">
+                <span class="status status-live">Live</span>
+                <span class="status status-testing">Testing</span>
+                <span class="status status-building">Building</span>
+                <span class="status status-prototype">Prototype</span>
+                <span class="status status-tool">Personal tool</span>
             </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Director of Strategic Planning | Penn State GPSA</h3>
-                    <p class="experience-meta">August 2024 - May 2025</p>
-                </div>
-                <p>
-                    Managed and allocated $108,000 annual operating budget with enhanced forecasting and strategic 
-                    oversight. Created automated cash flow metrics and modernized budgeting formats, improving 
-                    decision-making clarity and fund visibility.
-                </p>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>CFO | ICBSC Business Competition</h3>
-                    <p class="experience-meta">January 2024 - April 2024</p>
-                </div>
-                <p>
-                    Led financial strategy in competitive 11-week global business simulation, delivering 90.8% YoY 
-                    revenue growth and 167% total revenue growth with 22% CAGR. Earned Best Presentation and 
-                    Runner-up Best Overall awards among international university teams.
-                </p>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Financial Officer | CAFES</h3>
-                    <p class="experience-meta">August 2022 - May 2024</p>
-                </div>
-                <p>
-                    Maintained $130,000 annual operating budget and oversaw 49+ grant projects. Implemented enhanced 
-                    financial governance systems, reducing mischarge rates to zero and achieving 100% compliance 
-                    over two academic years.
-                </p>
+            <div class="project-grid" id="project-grid">
+                <p class="projects-fallback">Loading projects…</p>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
+    <!-- Research -->
+    <section id="research" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="subtitle">My Work</p>
-                <h2>Portfolio</h2>
+                <p class="eyebrow">Research</p>
+                <h2>Papers and method</h2>
             </div>
-            <div class="portfolio-grid">
-                <a href="projects/financial_modeling.html" class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h4>
-                                <span>Financial Modeling <i class="fa-solid fa-chevron-right fa-sm"></i>
-                                </span>
-                            </h4>
-                        </div>
-                        <div class="portfolio-description">
-                            <p>
-                                Comprehensive Excel and Python models including DCF analysis, company valuations, 
-                                and scenario planning for strategic decision-making.
-                            </p>
-                        </div>
-                        <div class="portfolio-footer">
-                            <div class="portfolio-badges">
-                                <span class="portfolio-badge">Excel</span>
-                                <span class="portfolio-badge">Python</span>
-                                <span class="portfolio-badge">VBA</span>
-                            </div>
-                        </div>
+            <div class="research-list">
+                <article class="card research-item method">
+                    <p class="kicker">How I test ideas</p>
+                    <h3>Pre-registered, and every attempt counts</h3>
+                    <p>
+                        Major backtests are pre-registered and logged in a trial registry, so the number of attempts
+                        counts against a result. Of 100+ documented strategy tests, about half were rejected on the
+                        data, including a cointegration pairs idea.
+                    </p>
+                </article>
+                <article class="card research-item">
+                    <p class="kicker">Working paper · 2023 – present</p>
+                    <h3>Lead Exposure and Stock Returns in G20 Countries</h3>
+                    <p>
+                        Panel regressions linking the Environmental Performance Index's lead-exposure measure to stock
+                        returns across G20 countries, and what the relationship implies about costs that markets don't
+                        price. Currently being revised.
+                    </p>
+                </article>
+                <article class="card research-item">
+                    <p class="kicker">Senior thesis · Willamette University · 2024</p>
+                    <h3>Do Cultural Factors Explain Differences in Investor Behavior between Japan and the US?</h3>
+                    <p>
+                        An interdisciplinary thesis for the Economics and Japanese Studies majors: uncertainty avoidance,
+                        loss aversion and the cash-versus-stocks gap, weighed against non-cultural explanations such as
+                        retirement-plan design.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Work samples</p>
+                <h2>Finance work and lab</h2>
+            </div>
+            <div class="work-grid">
+                <a href="projects/financial_modeling.html" class="card work-card">
+                    <h3>Finance work <i class="fa-solid fa-chevron-right fa-xs"></i></h3>
+                    <p>
+                        A $31B merger analysis (Canadian Pacific × Norfolk Southern), a Reddit long pitch, Monte Carlo
+                        simulation, capital budgeting and CAPM work from the Penn State MFIN.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Excel / VBA</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Valuation</span>
                     </div>
                 </a>
-
-                <a href="projects/power_bi_dashboards.html" class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h4><span>Power BI Dashboards <i class="fa-solid fa-chevron-right fa-sm"></i>
-                            </span>
-                            </h4>
-                        </div>
-                        <div class="portfolio-description">
-                            <p>
-                                Interactive data visualizations and business intelligence dashboards for 
-                                financial performance tracking and KPI monitoring.
-                            </p>
-                        </div>
-                        <div class="portfolio-footer">
-                            <div class="portfolio-badges">
-                                <span class="portfolio-badge">Power BI</span>
-                                <span class="portfolio-badge">DAX</span>
-                                <span class="portfolio-badge">SQL</span>
-                            </div>
-                        </div>
+                <a href="projects/curiosity_projects.html" class="card work-card">
+                    <h3>Lab <i class="fa-solid fa-chevron-right fa-xs"></i></h3>
+                    <p>
+                        Short quantitative curiosities: testing random hypotheses with math, data and code.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Math</span>
+                        <span class="tag">Data</span>
                     </div>
                 </a>
-
-                <a href="projects/budget_analysis.html" class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h4><span>Budget Analysis <i class="fa-solid fa-chevron-right fa-sm"></i>
-                            </span>
-                            </h4>
-                        </div>
-                        <div class="portfolio-description">
-                            <p>
-                                Advanced budgeting frameworks and variance analysis systems implemented 
-                                across multiple organizations with budgets exceeding $250,000.
-                            </p>
-                        </div>
-                        <div class="portfolio-footer">
-                            <div class="portfolio-badges">
-                                <span class="portfolio-badge">Budgeting</span>
-                                <span class="portfolio-badge">Forecasting</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="projects/strategic_planning.html" class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h4><span>Strategic Planning <i class="fa-solid fa-chevron-right fa-sm"></i>
-                            </span>
-                            </h4>
-                        </div>
-                        <div class="portfolio-description">
-                            <p>
-                                Business strategy development, SWOT analysis, and financial planning
-                                projects that drive organizational growth and efficiency.
-                            </p>
-                        </div>
-                        <div class="portfolio-footer">
-                            <div class="portfolio-badges">
-                                <span class="portfolio-badge">Strategy</span>
-                                <span class="portfolio-badge">Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="projects/curiosity_projects.html" class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="portfolio-header">
-                            <h4><span>Curiosity Projects <i class="fa-solid fa-chevron-right fa-sm"></i>
-                            </span>
-                            </h4>
-                        </div>
-                        <div class="portfolio-description">
-                            <p>
-                                Miscellaneous explorations and quantitative curiosities — testing random
-                                hypotheses with math, data, and code.
-                            </p>
-                        </div>
-                        <div class="portfolio-footer">
-                            <div class="portfolio-badges">
-                                <span class="portfolio-badge">Python</span>
-                                <span class="portfolio-badge">Math</span>
-                                <span class="portfolio-badge">Data Analysis</span>
-                            </div>
-                        </div>
+                <a href="projects/cv.html#competitions" class="card work-card">
+                    <h3>Competitions <i class="fa-solid fa-chevron-right fa-xs"></i></h3>
+                    <p>
+                        CFO of an ICBSC team that won Best Presentation plus two runner-up awards, and team captain in the
+                        Humana-Mays Healthcare Analytics Case Competition.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Strategy</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Python</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <!-- Background -->
+    <section id="background" class="section">
         <div class="container">
             <div class="section-header">
-                <p class="subtitle">Get In Touch</p>
+                <p class="eyebrow">Background</p>
+                <h2>Experience and education</h2>
+            </div>
+
+            <ol class="timeline">
+                <li>
+                    <p class="when">Jul 2026 – present</p>
+                    <h3>Founder &amp; Manager · Atlas Keystone LLC</h3>
+                    <p>Trading-technology and research company. Options and equity playbooks with defined risk, a multi-agent research pipeline on AWS, and quantitative research in Python.</p>
+                </li>
+                <li>
+                    <p class="when">Nov 2025 – Feb 2026</p>
+                    <h3>Senior Financial Support Specialist · Bay Area Community College Consortium</h3>
+                    <p>Financial operations for a $69M budget serving 28 community colleges and 800+ K-12 schools. Processed $27.9M+ in transfers and journal entries, and wrote a Python script that cut a recurring form's cycle time by 64%.</p>
+                </li>
+                <li>
+                    <p class="when">Sep 2024 – Nov 2025</p>
+                    <h3>Strategy Consultant · Impulse</h3>
+                    <p>Weekly strategy work with the CEO of a self-improvement app: SWOT analysis, business plan and monetization. Three or more features shipped from my recommendations.</p>
+                </li>
+                <li>
+                    <p class="when">2024 – 2025</p>
+                    <h3>Master of Finance · Penn State Smeal College of Business</h3>
+                    <p>GPA 3.89. Director of Strategic Planning for the Graduate and Professional Student Association ($108K budget) and Treasurer of Business Leaders for Change.</p>
+                </li>
+                <li>
+                    <p class="when">2020 – 2024</p>
+                    <h3>B.A. Economics &amp; Japanese Studies · Willamette University</h3>
+                    <p>Summa cum laude (3.93), departmental honors in Economics, Phi Beta Kappa. A year at Tokyo International University. Financial officer for a $130K student grant fund.</p>
+                </li>
+            </ol>
+
+            <div class="facts-grid">
+                <div class="card facts-card">
+                    <h3>Honors</h3>
+                    <ul>
+                        <li>Phi Beta Kappa</li>
+                        <li>Summa cum laude; departmental honors, Economics</li>
+                        <li>Richard M. Gillis Senior Award in Economics</li>
+                        <li>CFA Program Student Scholarship</li>
+                        <li>Willamette Senior Key</li>
+                    </ul>
+                </div>
+                <div class="card facts-card">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>Financial Modeling &amp; Valuation Analyst (FMVA®), CFI, 2026</li>
+                        <li>AI for Business &amp; Finance, Columbia Business School Exec Ed / Wall Street Prep, 2025</li>
+                        <li>Relational Databases and SQL, Stanford Online, 2025</li>
+                        <li>JLPT N3, 2023</li>
+                    </ul>
+                </div>
+                <div class="card facts-card">
+                    <h3>Tools and languages</h3>
+                    <ul>
+                        <li>Python, R, SQL, Excel / VBA</li>
+                        <li>AWS, LLM agents (Claude API)</li>
+                        <li>React Native / Expo, Firebase, Supabase</li>
+                        <li>English (native), Japanese (professional), Spanish (limited)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <a href="projects/cv.html" class="btn btn-outline">Full CV</a>
+                <a href="assets/Gabriel_Kronisch_Resume.pdf" class="btn btn-outline" download>
+                    <i class="fas fa-download"></i>Résumé (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography -->
+    <section id="photography" class="section section-alt">
+        <div class="container">
+            <div class="card photo-banner">
+                <i class="fas fa-camera-retro icon" aria-hidden="true"></i>
+                <div>
+                    <h2>Photography</h2>
+                    <p>
+                        I've shot since high school: three years of photography classes, paid work, and full marks on
+                        the AP Photography exam. These days it's a Fujifilm X100F and X-T4. A portfolio site is on the way.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="eyebrow">Get in touch</p>
                 <h2>Contact</h2>
             </div>
             <div class="contact-content">
-                <p>
-                    I'm actively seeking opportunities as an FP&A Analyst, Financial Analyst, or related roles. 
-                    Let's connect to discuss how I can contribute to your organization's financial success.
-                </p>
+                <p>Questions about the research, one of the projects, or working together? Email is best.</p>
                 <div class="contact-info">
                     <a href="mailto:gkronisch19@gmail.com" class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        gkronisch19@gmail.com
+                        <i class="fas fa-envelope"></i>gkronisch19@gmail.com
                     </a>
-                    <a href="https://linkedin.com/in/gabriel-kronisch" class="contact-item" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn Profile
+                    <a href="https://linkedin.com/in/gabriel-kronisch" class="contact-item" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>LinkedIn
                     </a>
-                     <a href="assets/Gabriel_Kronisch_Resume.pdf" class="contact-item" download>
-        <i class="fas fa-file-pdf"></i>
-        Download Resume
-        </a>
+                    <a href="assets/Gabriel_Kronisch_Resume.pdf" class="contact-item" download>
+                        <i class="fas fa-file-pdf"></i>Résumé
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 Gabriel Kronisch. All rights reserved.</p>
+        <p>&copy; 2026 Gabriel Kronisch</p>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-
-        // Font Awesome verification
-        function verifyFontAwesome() {
-            console.log('🔤 Checking Font Awesome availability...');
-            const testIcon = document.createElement('i');
-            testIcon.className = 'fas fa-sun';
-            document.body.appendChild(testIcon);
-            
-            setTimeout(() => {
-                const computedStyle = window.getComputedStyle(testIcon);
-                console.log('🔤 Font Awesome test icon style:', computedStyle.fontFamily);
-                console.log('🔤 Font Awesome test icon content:', computedStyle.content);
-                document.body.removeChild(testIcon);
-            }, 100);
-        }
-
-        // Theme Toggle Functionality
+        // Theme: default dark, remembered per visitor
         function initTheme() {
-            console.log('🎨 Initializing theme...');
-            
-            const themeToggle = document.querySelector('.theme-toggle');
-            
-            console.log('🔍 DOM Elements:', { themeToggle });
-            
-            // Check for saved theme preference or default to dark mode
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            console.log('💾 Saved theme:', savedTheme);
-            
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            console.log('📝 Set data-theme attribute to:', savedTheme);
-            
-            // Add click event listener
-            themeToggle.addEventListener('click', function() {
-                console.log('👆 Theme toggle clicked!');
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                console.log('🔄 Theme change:', currentTheme, '->', newTheme);
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                // Verify the change
-                const verifyTheme = document.documentElement.getAttribute('data-theme');
-                console.log('✅ Verified theme after change:', verifyTheme);
-                console.log('🎯 CSS will now control icon visibility based on data-theme');
+            let saved = 'dark';
+            try { saved = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+            document.documentElement.setAttribute('data-theme', saved);
+
+            document.querySelector('.theme-toggle').addEventListener('click', function () {
+                const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) {}
             });
         }
-        
 
-        // Mobile menu toggle functionality
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function () {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Mobile menu
         function initMobileMenu() {
-            const menuToggle = document.querySelector('.menu-toggle');
+            const toggle = document.querySelector('.menu-toggle');
             const sidebar = document.getElementById('sidebar-wrapper');
-            
-            if (menuToggle && sidebar) {
-                // Function to close the mobile menu
-                function closeMobileMenu() {
-                    sidebar.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    sidebar.setAttribute('aria-hidden', 'true');
-                }
-                
-                // Toggle menu when hamburger is clicked
-                menuToggle.addEventListener('click', function() {
-                    sidebar.classList.toggle('active');
-                    const isExpanded = sidebar.classList.contains('active');
-                    menuToggle.setAttribute('aria-expanded', isExpanded);
-                    sidebar.setAttribute('aria-hidden', !isExpanded);
-                });
-                
-                // Close menu when clicking sidebar links
-                const sidebarLinks = sidebar.querySelectorAll('.sidebar-nav-link');
-                sidebarLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        closeMobileMenu();
-                    });
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                        closeMobileMenu();
-                    }
-                });
-                
-                // Close menu when window is resized to desktop size
-                window.addEventListener('resize', function() {
-                    // Close sidebar if window width is greater than mobile breakpoint (768px)
-                    if (window.innerWidth > 768) {
-                        closeMobileMenu();
-                        console.log('🖥️ Window resized to desktop - mobile menu closed');
-                    }
-                });
+            if (!toggle || !sidebar) return;
+
+            function close() {
+                sidebar.classList.remove('active');
+                toggle.setAttribute('aria-expanded', 'false');
+                sidebar.setAttribute('aria-hidden', 'true');
             }
+
+            toggle.addEventListener('click', function () {
+                const open = sidebar.classList.toggle('active');
+                toggle.setAttribute('aria-expanded', String(open));
+                sidebar.setAttribute('aria-hidden', String(!open));
+            });
+            sidebar.querySelectorAll('.sidebar-nav-link').forEach(function (link) {
+                link.addEventListener('click', close);
+            });
+            document.addEventListener('click', function (e) {
+                if (!sidebar.contains(e.target) && !toggle.contains(e.target)) close();
+            });
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 820) close();
+            });
         }
 
-        // Manual test function for theme toggle
-        function testThemeToggle() {
-            console.log('🧪 Running manual theme toggle test...');
-            
-            console.log('🧪 Test - Setting theme to light mode...');
-            localStorage.setItem('theme', 'light');
-            document.documentElement.setAttribute('data-theme', 'light');
-            
-            setTimeout(() => {
-                console.log('🧪 Test - Setting theme to dark mode...');
-                localStorage.setItem('theme', 'dark');
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }, 2000);
+        // Projects grid from data/projects.json
+        const STATUS_LABELS = {
+            live: 'Live',
+            testing: 'Testing',
+            building: 'Building',
+            prototype: 'Prototype',
+            tool: 'Personal tool'
+        };
+
+        function el(tag, className, text) {
+            const node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text) node.textContent = text;
+            return node;
         }
 
-        // Add global test function for manual testing
-        window.testThemeToggle = testThemeToggle;
+        function renderProjects(projects) {
+            const grid = document.getElementById('project-grid');
+            grid.textContent = '';
+            projects.filter(function (p) { return p.visible; }).forEach(function (p) {
+                const card = el(p.url ? 'a' : 'article', 'card project-card');
+                if (p.url) {
+                    card.href = p.url;
+                    card.target = '_blank';
+                    card.rel = 'noopener';
+                }
 
-        // Initialize functionality when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize theme functionality
+                const top = el('div', 'project-card-top');
+                top.appendChild(el('h3', '', p.name));
+                const status = STATUS_LABELS[p.status] ? p.status : 'prototype';
+                top.appendChild(el('span', 'status status-' + status, STATUS_LABELS[status]));
+                card.appendChild(top);
+
+                card.appendChild(el('p', '', p.blurb));
+
+                const tags = el('div', 'tags');
+                (p.tags || []).forEach(function (t) { tags.appendChild(el('span', 'tag', t)); });
+                card.appendChild(tags);
+
+                if (p.url) {
+                    const host = p.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+                    card.appendChild(el('span', 'project-link', host + ' ↗'));
+                }
+                grid.appendChild(card);
+            });
+        }
+
+        function loadProjects() {
+            fetch('data/projects.json')
+                .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(function (data) { renderProjects(data.projects || []); })
+                .catch(function () {
+                    document.getElementById('project-grid').innerHTML =
+                        '<p class="projects-fallback">Projects couldn\'t load. Try refreshing the page.</p>';
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
             initTheme();
-            // Initialize mobile menu functionality
             initMobileMenu();
-            
-            // Add test button to console
-            console.log('🧪 Test function available: Call testThemeToggle() to manually test theme switching');
+            loadProjects();
         });
     </script>
 </body>
