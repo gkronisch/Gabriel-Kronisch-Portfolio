@@ -1,5 +1,5 @@
 {
-  "_readme": "Cards for the Projects grid on index.html, shown in this order. status: live | testing | building | prototype | tool. visible: false hides a card without deleting it. url: null means no link.",
+  "_readme": "Cards for the Projects grid on index.html, shown in this order. status: live | testing | building | prototype | tool. visible: false hides a card, but this file is public, so anything here can be read. Keep private projects in data/projects-hidden.local.json (not committed). url: null means no link.",
   "projects": [
     {
       "id": "atlas-keystone",
@@ -68,8 +68,8 @@
       "id": "cardmaxx",
       "name": "CardMaxx",
       "status": "tool",
-      "blurb": "My own credit-card offer tracker. A local scraper collects my card offers into SQLite, and a Claude chat tells me which card to use where. No bank linking.",
-      "tags": ["Python", "Playwright", "Expo", "Claude API"],
+      "blurb": "My own card-rewards helper: a private, no-login picker that tells me which of my cards earns the most for a purchase, plus a Claude chat about my cards. An offers scraper is still in progress.",
+      "tags": ["JavaScript", "Python", "Claude API"],
       "url": null,
       "visible": true
     },
@@ -81,24 +81,6 @@
       "tags": ["Python", "Automator", "Claude API", "Gemini API"],
       "url": null,
       "visible": true
-    },
-    {
-      "id": "sanebox-homemade",
-      "name": "Email triage (working name)",
-      "status": "tool",
-      "blurb": "Local, privacy-first email triage. A machine-learning model sorts Gmail into folders, learns from every move, snoozes mail and sends a daily digest. Hidden until it has a new name and ships without personal data.",
-      "tags": ["Python", "scikit-learn", "Gmail API"],
-      "url": null,
-      "visible": false
-    },
-    {
-      "id": "dosetrack",
-      "name": "dosetrack",
-      "status": "building",
-      "blurb": "Private, local-first tracker for Android and Windows. Hidden: started November 2026, nothing shipped yet, and it's personal.",
-      "tags": ["Flutter"],
-      "url": null,
-      "visible": false
     }
   ]
 }
